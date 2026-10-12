@@ -28,7 +28,6 @@ dist/
 .vscode/
 .DS_Store
 Thumbs.db
-uv.lock
 uv/
 uvx/
 
