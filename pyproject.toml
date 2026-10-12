@@ -49,6 +49,7 @@ include = ["applied_ai*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["."]
 addopts = "-ra --strict-markers --strict-config"
 filterwarnings = ["error"]
 
