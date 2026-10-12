@@ -35,7 +35,9 @@ def run(*, allow_live: bool = False) -> GraphSnapshot:
             "opening": speaker("opening", "Define the issue neutrally", "optimist"),
             "optimist": speaker("optimist", "Make the strongest constructive case", "skeptic"),
             "skeptic": speaker("skeptic", "Challenge assumptions and identify risks", "synthesis"),
-            "synthesis": speaker("synthesis", "Summarize agreement, uncertainty, and next steps", None),
+            "synthesis": speaker(
+                "synthesis", "Summarize agreement, uncertainty, and next steps", None
+            ),
         },
         start="opening",
     )
