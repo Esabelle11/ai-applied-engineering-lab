@@ -34,7 +34,10 @@ class CitizenResult:
 
 
 def run(*, allow_live: bool = False) -> CitizenResult:
-    selected = ProviderFactory().create( allow_live=allow_live, mock_text="Use the streetlight service form and include the pole number [city-001].", )
+    selected = ProviderFactory().create(
+        allow_live=allow_live,
+        mock_text="Use the streetlight service form and include the pole number [city-001].",
+    )
 
     provider = selected.provider
     try:
