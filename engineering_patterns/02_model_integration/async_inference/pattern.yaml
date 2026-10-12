@@ -1,0 +1,11 @@
+id: model_integration.async_inference
+name: Concurrent synchronous calls
+category: 02_model_integration
+status: experimental
+level: intermediate
+requires_api_key: false
+supports_offline_testing: true
+entrypoint: run.py
+validation:
+  offline_test: tests/test_phase3_patterns.py
+  benchmarks: false

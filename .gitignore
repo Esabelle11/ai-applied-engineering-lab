@@ -1,0 +1,42 @@
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+build/
+dist/
+
+# Editors / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+uv.lock
+uv/
+uvx/
+
+# Local outputs
+outputs/
+experiments/results/
+benchmarks/results/
+benchmarks/reports/generated/
+
+# Phase 7 transient dependency-audit export
+audit-requirements.txt

@@ -1,0 +1,11 @@
+{
+  "id":"math_strategies","version":"1.0.0",
+  "question":"Under identical synthetic arithmetic prompts, how do direct answers, tool execution and verification behave?",
+  "hypothesis":"A bounded independent verification loop or arithmetic tool improves accuracy on some scripted mistakes, but each can also fail.",
+  "controls":["Same five arithmetic questions with independently checked integer answers","Same synthetic first answer for direct and verification strategies","Mock model text is fixed by fixture; no API calls","Tool evaluates only a restricted integer arithmetic AST, never arbitrary Python","Maximum 2 model calls for verification; other strategies use 1","Simulated per-model latency 0.020 s and per verification/tool step 0.003/0.004 s"],
+  "dataset":"benchmarks/datasets/math_tasks.json",
+  "implementations":["direct","arithmetic_tool","verification_loop"],
+  "metrics":["exact_numeric_accuracy","tool_success","simulated_latency_p50_p95","error_rate","fixture_token_usage","mean_model_attempts"],
+  "seed":1234,"repetitions":5,"concurrency":1,"simulation":true,
+  "limitations":["Mock responses are deliberately scripted; results do not measure model intelligence or reasoning ability.","The local arithmetic interpreter is not the Phase 4 Docker Python sandbox and does not execute model-generated Python.","Independent verification checks arithmetic, not proof validity or semantic reasoning.","Corrected answers are synthetic; improvements are a property of these fixtures, not LLM skill.","Token counts are fixture-defined and are not billed usage; costs are unknown (N/A)."]
+}

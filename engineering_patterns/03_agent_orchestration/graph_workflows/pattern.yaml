@@ -1,0 +1,11 @@
+id: agent_orchestration.graph_workflows
+name: Stateful graph and checkpoint resume
+category: 03_agent_orchestration
+status: experimental
+level: intermediate
+requires_api_key: false
+supports_offline_testing: true
+entrypoint: run.py
+validation:
+  offline_test: tests/test_phase3_patterns.py
+  benchmarks: false

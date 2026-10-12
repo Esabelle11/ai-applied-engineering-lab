@@ -1,0 +1,5 @@
+[
+  {"id":"probe_01","question":"What is 17 * 23 + 9? Reply with only the integer.","expected":"400"},
+  {"id":"probe_02","question":"What is (21 - 4) * 3? Reply with only the integer.","expected":"51"},
+  {"id":"probe_03","question":"What is 90 - 17 * 3? Reply with only the integer.","expected":"39"}
+]

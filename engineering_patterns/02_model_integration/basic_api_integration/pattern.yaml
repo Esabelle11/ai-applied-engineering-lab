@@ -1,0 +1,7 @@
+id: model_integration.basic_api_integration
+name: Basic API Integration
+category: 02_model_integration
+status: demo
+requires_api_key: false
+supports_offline_testing: true
+entrypoint: run.py

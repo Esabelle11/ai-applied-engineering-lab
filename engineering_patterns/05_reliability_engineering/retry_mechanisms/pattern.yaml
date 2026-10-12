@@ -1,0 +1,7 @@
+id: reliability.retry_mechanisms
+name: Retry, Deadline, and Fallback
+category: 05_reliability_engineering
+status: demo
+requires_api_key: false
+supports_offline_testing: true
+entrypoint: run.py

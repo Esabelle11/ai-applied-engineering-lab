@@ -1,0 +1,6 @@
+{
+  "model": "fake-model-v1",
+  "request_id": "offline-request-001",
+  "output_text": "A deterministic mock response for offline tests.",
+  "usage": {"input_tokens": 10, "output_tokens": 8}
+}

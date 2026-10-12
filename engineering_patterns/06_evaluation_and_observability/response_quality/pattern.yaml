@@ -1,0 +1,11 @@
+id: evaluation_and_observability.response_quality
+name: Deterministic evaluation dataset
+category: 06_evaluation_and_observability
+status: experimental
+level: intermediate
+requires_api_key: false
+supports_offline_testing: true
+entrypoint: run.py
+validation:
+  offline_test: tests/test_phase3_patterns.py
+  benchmarks: false

@@ -1,0 +1,8 @@
+# Rename placeholder values when copying to a concrete category.
+id: category.pattern_name
+name: Pattern Name
+category: NN_category
+status: template
+requires_api_key: false
+supports_offline_testing: true
+entrypoint: run.py

@@ -1,0 +1,11 @@
+id: model_integration.model_capability_detection
+name: Explicit capability detection
+category: 02_model_integration
+status: experimental
+level: intermediate
+requires_api_key: false
+supports_offline_testing: true
+entrypoint: run.py
+validation:
+  offline_test: tests/test_phase3_patterns.py
+  benchmarks: false

@@ -1,0 +1,9 @@
+[
+  {"id":"success_first_try","faults":[],"expected_success":true},
+  {"id":"rate_limit_once","faults":[{"type":"rate_limit"}],"expected_success":true},
+  {"id":"service_unavailable_twice","faults":[{"type":"unavailable"},{"type":"unavailable"}],"expected_success":true},
+  {"id":"timeout_twice","faults":[{"type":"timeout"},{"type":"timeout"}],"expected_success":true},
+  {"id":"retry_after_once","faults":[{"type":"rate_limit","retry_after_seconds":0.4}],"expected_success":true},
+  {"id":"authentication_denied","faults":[{"type":"authentication"}],"expected_success":false},
+  {"id":"service_persistently_down","faults":[{"type":"unavailable"},{"type":"unavailable"},{"type":"unavailable"},{"type":"unavailable"}],"expected_success":false}
+]

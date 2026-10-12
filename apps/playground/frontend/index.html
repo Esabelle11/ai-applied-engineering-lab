@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#10171b">
+  <title>Applied AI Lab — Playground</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="logo-mark">A<span class="logo-dot"></span></span><div><strong>applied<span class="brand-accent">/</span>ai</strong><small>ENGINEERING LAB</small></div></div>
+      <div class="side-section">WORKSPACE</div>
+      <nav class="nav" aria-label="Playground navigation">
+        <button class="nav-item active" data-section="overview"><span class="nav-icon">◫</span> Overview</button>
+        <button class="nav-item" data-section="patterns"><span class="nav-icon">▦</span> Pattern library</button>
+        <button class="nav-item" data-section="playground"><span class="nav-icon">▶</span> Playground</button>
+        <button class="nav-item" data-section="compare"><span class="nav-icon">⇄</span> Compare</button>
+        <button class="nav-item" data-section="evidence"><span class="nav-icon">▥</span> Evidence</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="environment"><span class="status-dot"></span><div><b>LOCAL WORKSPACE</b><small id="connection">Checking backend…</small></div></div>
+        <div class="side-meta">v0.7.0 <span>·</span> Phase 6 / D6</div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar"><div class="breadcrumbs">WORKSPACE <span>/</span> <b id="breadcrumb">Overview</b></div><div class="top-right"><span id="mode-badge" class="pill">OFFLINE FIRST</span><button id="auth-button" class="icon-button" title="Set access token">⚿ <span>Access</span></button></div></header>
+      <section id="overview" class="view active">
+        <div class="eyebrow"><span class="line"></span> THE EXECUTABLE HANDBOOK</div>
+        <h1>Engineering AI,<br><em>one pattern at a time.</em></h1>
+        <p class="hero-copy">Explore the reusable systems behind reliable AI applications. Run controlled examples, inspect what happened, and compare implementation tradeoffs—all from one workspace.</p>
+        <div class="hero-actions"><button class="primary-button" data-go="playground">Open playground <span>↗</span></button><button class="secondary-button" data-go="patterns">Browse patterns <span>→</span></button></div>
+        <div class="metric-grid"><div class="metric"><div class="metric-label">ENGINEERING DOMAINS</div><b>08</b><small>Independent capabilities</small></div><div class="metric"><div class="metric-label">REGISTERED PATTERNS</div><b id="pattern-count">—</b><small>Discoverable experiments</small></div><div class="metric"><div class="metric-label">AVAILABLE DEMOS</div><b id="demo-count">—</b><small>Safe, curated execution</small></div><div class="metric"><div class="metric-label">API BUDGET REMAINING</div><b id="quota-left">—</b><small>Process-local call units</small></div></div>
+        <div class="two-column"><div class="panel"><div class="panel-top"><div><div class="tiny-label">QUICK START</div><h2>Choose a starting point</h2></div><span class="tag">NO API KEY</span></div><div id="quick-list" class="quick-list"></div></div><div class="panel concepts"><div class="tiny-label">SYSTEM DESIGN</div><h2>Clear boundaries.<br>Composable systems.</h2><div class="flow-chart"><div class="flow-node">Handbook patterns <small>Concepts & examples</small></div><div class="flow-arrow">↓</div><div class="flow-node highlight">Shared Python SDK <small>Single source of logic</small></div><div class="flow-arrow">↓</div><div class="flow-node">Controlled runners <small>Policies & budgets</small></div><div class="flow-arrow">↓</div><div class="flow-node">Playground / reports <small>Inspectable outputs</small></div></div></div></div>
+      </section>
+
+      <section id="patterns" class="view"><div class="view-heading"><div><div class="eyebrow"><span class="line"></span> KNOWLEDGE CATALOG</div><h1>Pattern <em>library.</em></h1><p>Browse the canonical, runnable handbook patterns. The UI never directly executes README or script files.</p></div><span id="pattern-total" class="counter">— PATTERNS</span></div><div class="toolbar"><label class="search-bar"><span>⌕</span><input id="pattern-search" type="search" placeholder="Search name or category…" autocomplete="off"></label><select id="pattern-filter" aria-label="Filter pattern category"><option value="">All categories</option></select></div><div id="pattern-grid" class="pattern-grid"></div></section>
+
+      <section id="playground" class="view"><div class="view-heading"><div><div class="eyebrow"><span class="line"></span> EXECUTE A PATTERN</div><h1>Live <em>workbench.</em></h1><p>Curated SDK exercises with bounded inputs. Offline mock by default; live calls require explicit server permission.</p></div></div><div class="workbench"><div class="panel editor"><div class="panel-top"><h2>01 <span>Configure</span></h2><span class="tag">APPROVED RUNNER</span></div><label class="field-label" for="example-select">ENGINEERING EXAMPLE</label><select id="example-select"></select><label class="field-label" for="example-input" id="example-input-label">INPUT</label><textarea id="example-input" maxlength="500" rows="5" spellcheck="false"></textarea><div class="input-footer"><small id="example-description">Choose an example</small><small><span id="char-count">0</span> / 500</small></div><label class="toggle-row"><input type="checkbox" id="live-toggle"><span class="toggle-track"></span><span><b>Live provider request</b><small>Requires server opt-in, token, and provider credentials</small></span></label><button class="primary-button full" id="run-button">▶ &nbsp; Run example <span>↗</span></button></div><div class="panel output"><div class="panel-top"><h2>02 <span>Inspect result</span></h2><span id="run-state" class="tag muted">READY</span></div><div class="output-empty" id="output-empty"><div class="empty-icon">⌁</div><b>No execution yet</b><p>Your output, validation, traces and usage will appear here.</p></div><div id="output-content" hidden><div class="result-stats"><div><small>PROVIDER</small><strong id="result-provider">—</strong></div><div><small>ATTEMPTS</small><strong id="result-attempts">—</strong></div><div><small>WALL LATENCY</small><strong id="result-latency">—</strong></div><div><small>COST</small><strong id="result-cost">N/A</strong></div></div><div class="tiny-label">RESPONSE</div><pre id="result-text" class="response-text"></pre><div class="tiny-label">VALIDATION</div><div id="result-validation" class="data-box"></div><div class="tiny-label">EXECUTION TRACE</div><div id="result-trace" class="trace-list"></div><div class="tiny-label">USAGE</div><div id="result-usage" class="data-box"></div><p id="result-notes" class="footnote"></p></div></div></div></section>
+
+      <section id="compare" class="view"><div class="view-heading"><div><div class="eyebrow"><span class="line"></span> TRADEOFF ANALYSIS</div><h1>Compare <em>approaches.</em></h1><p>Matched offline inputs, controlled failure sequences, and side-by-side evidence—not unsupported rankings.</p></div></div><div class="panel compare-panel"><label class="field-label" for="compare-select">COMPARISON SCENARIO</label><select id="compare-select"></select><p id="compare-description" class="helper"></p><label class="field-label" for="compare-input">SHARED INPUT</label><input id="compare-input" maxlength="500" value="Explain reliable AI systems"><button class="primary-button" id="compare-button">Run comparison <span>⇄</span></button></div><div id="compare-results" class="compare-results"><div class="empty-card">Select a scenario and run a comparison to see both implementations.</div></div><p id="compare-scope" class="footnote"></p></section>
+
+      <section id="evidence" class="view"><div class="view-heading"><div><div class="eyebrow"><span class="line"></span> REPRODUCIBLE BASELINES</div><h1>Evidence, <em>not anecdotes.</em></h1><p>Phase 5 baseline summaries, tied to fixed datasets and manifests. These results are synthetic and are not model-quality benchmarks.</p></div></div><div class="notice">ⓘ &nbsp; Offline fixture results are not real provider latency, reliability, token cost, or answer quality. Read methodology and limitations before interpreting the numbers.</div><div id="evidence-list" class="evidence-list"></div></section>
+      <footer>APPLIED AI ENGINEERING LAB <span>·</span> LOCAL-FIRST EXPERIMENTAL WORKSPACE <span>·</span> NO GENERATED CODE EXECUTES IN THE WEB SERVER</footer>
+    </main>
+  </div>
+  <dialog id="auth-dialog"><form method="dialog"><h2>Access token</h2><p>If the server requires a token, enter it to access the local playground. The token stays in this page's memory and is not saved.</p><label for="auth-input">PLAYGROUND_TOKEN</label><input id="auth-input" type="password" autocomplete="off" placeholder="Enter server token"><div class="dialog-actions"><button value="cancel" class="secondary-button">Cancel</button><button id="save-token" value="save" class="primary-button">Use token</button></div></form></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

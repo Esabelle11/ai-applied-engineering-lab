@@ -1,0 +1,23 @@
+{
+  "applied_ai_version": "0.6.0",
+  "clock": "wall_perf_counter",
+  "comparison_status": "offline_synthetic",
+  "concurrency": 1,
+  "dataset_sha256": "56d88bfc3203a0e7d69ed870222f1be28b13e804c5e2b37d4c74936a0ed93d0f",
+  "experiment_id": "orchestration_comparison",
+  "experiment_version": "1.0.0",
+  "git_revision": null,
+  "langgraph_version": null,
+  "live_api_calls": 0,
+  "manifest_sha256": "936153f2311ec1b8d81e4d2e04677db862e1e81040a20f134ec751600fce7523",
+  "model": null,
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "prompt_version": "synthetic-v1",
+  "provider": "none",
+  "python": "3.13.5",
+  "repetitions": 5,
+  "run_utc": "2026-10-12T03:33:39.533999+00:00",
+  "seed": 1234,
+  "simulation": true,
+  "temperature": null
+}

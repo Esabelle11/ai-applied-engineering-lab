@@ -1,0 +1,36 @@
+name: Verify release tag
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+jobs:
+  tag-verification:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
+      - run: uv python install 3.12
+      - name: Verify tag matches package version
+        shell: bash
+        run: |
+          package_version=$(python -c "import tomllib; print(tomllib.load(open('pyproject.toml', 'rb'))['project']['version'])")
+          test "${GITHUB_REF_NAME}" = "v${package_version}" || (echo 'Tag/version mismatch' >&2; exit 1)
+      - name: Install and run gates
+        run: |
+          uv sync --locked --group dev --extra providers --extra playground
+          uv run --locked python scripts/release_check.py --strict
+          uv run --locked pytest -q
+          uv run --locked ruff check .
+          uv run --locked ruff format --check .
+          uv run --locked mypy src
+      - name: Build artifacts
+        run: uv build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ai-lab-dist
+          path: dist/*
+          if-no-files-found: error

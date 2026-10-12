@@ -1,0 +1,7 @@
+id: prompt_engineering.prompt_templates
+name: Prompt Templates
+category: 01_prompt_engineering
+status: demo
+requires_api_key: false
+supports_offline_testing: true
+entrypoint: run.py

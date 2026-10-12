@@ -1,0 +1,41 @@
+name: Security scans
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: '21 7 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  secrets:
+    name: Git history secret scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Gitleaks (historical scanning)
+        uses: gitleaks/gitleaks-action@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  dependencies:
+    name: Locked dependency vulnerability scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
+      - name: Require lockfile
+        run: test -s uv.lock || (echo 'Commit uv.lock to audit locked dependencies' >&2; exit 1)
+      - name: Export locked requirements including all extras/dev groups
+        run: uv export --locked --all-extras --all-groups --no-emit-project --format requirements.txt --no-hashes --output-file audit-requirements.txt
+      - name: Vulnerability audit (network required; fail on findings)
+        run: uvx --from 'pip-audit>=2.10,<3' pip-audit --no-deps -r audit-requirements.txt
+      - name: Remove temporary requirements
+        if: always()
+        run: rm -f audit-requirements.txt

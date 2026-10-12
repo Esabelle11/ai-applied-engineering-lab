@@ -1,0 +1,7 @@
+[
+  {"id":"math_01","question":"Compute 17 * 23 + 9; reply with an integer.","expression":"17 * 23 + 9","expected":"400","direct_answer":"398","tool_expression":"17 * 23 + 9","corrected_answer":"400"},
+  {"id":"math_02","question":"Compute (21 - 4) * 3; reply with an integer.","expression":"(21 - 4) * 3","expected":"51","direct_answer":"51","tool_expression":"(21 - 4) * 3","corrected_answer":"51"},
+  {"id":"math_03","question":"Compute 37 * 12; reply with an integer.","expression":"37 * 12","expected":"444","direct_answer":"442","tool_expression":"36 * 12","corrected_answer":"440"},
+  {"id":"math_04","question":"Compute 90 - 17 * 3; reply with an integer.","expression":"90 - 17 * 3","expected":"39","direct_answer":"40","tool_expression":"__import__('os').system('echo forbidden')","corrected_answer":"39"},
+  {"id":"math_05","question":"Compute 6 * (4 + 5); reply with an integer.","expression":"6 * (4 + 5)","expected":"54","direct_answer":"54","tool_expression":"6 * (4 + 5)","corrected_answer":"54"}
+]

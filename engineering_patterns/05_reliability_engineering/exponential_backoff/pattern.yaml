@@ -1,0 +1,11 @@
+id: reliability_engineering.exponential_backoff
+name: Retry backoff policy comparison
+category: 05_reliability_engineering
+status: experimental
+level: intermediate
+requires_api_key: false
+supports_offline_testing: true
+entrypoint: run.py
+validation:
+  offline_test: tests/test_phase3_patterns.py
+  benchmarks: false

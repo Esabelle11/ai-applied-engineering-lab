@@ -1,0 +1,11 @@
+id: reasoning_and_execution.plan_execute_verify
+name: Iterative independent verification
+category: 08_reasoning_and_execution
+status: experimental
+level: intermediate
+requires_api_key: false
+supports_offline_testing: true
+entrypoint: run.py
+validation:
+  offline_test: tests/test_phase3_patterns.py
+  benchmarks: false

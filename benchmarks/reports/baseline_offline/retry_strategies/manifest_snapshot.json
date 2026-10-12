@@ -1,0 +1,40 @@
+{
+  "concurrency": 1,
+  "controls": [
+    "Same ordered transient and permanent faults for every strategy",
+    "Identical MockProvider request and token fixtures",
+    "One simulated provider call takes 0.020 seconds",
+    "No real sleeping; deterministic virtual clock",
+    "Max attempts: 1 for no_retry and 3 for other strategies",
+    "Deterministic jitter fraction 0.5; fixed/exponential begin at 0.1 s",
+    "Identical Retry-After constraints"
+  ],
+  "dataset": "benchmarks/datasets/retry_faults.json",
+  "hypothesis": "Backoff-enabled policies recover more transient cases than single attempts, at the cost of higher simulated delay.",
+  "id": "retry_strategies",
+  "implementations": [
+    "no_retry",
+    "fixed",
+    "exponential",
+    "exponential_jitter"
+  ],
+  "limitations": [
+    "Latency is virtual clock time, NOT actual network or backend latency.",
+    "NoRetry has a different max_attempts by design; only the other three compare delay strategies at the same limit.",
+    "Expected failure is scored correct only when the fixture expects an error; this is not model answer accuracy.",
+    "Fixed fixtures cannot establish real-world optimal delay settings or provider availability."
+  ],
+  "metrics": [
+    "expected_outcome_match",
+    "response_completion",
+    "simulated_latency_p50_p95",
+    "attempts",
+    "error_rate",
+    "token_fixture_usage"
+  ],
+  "question": "Which bounded retry policy recovers from the same synthetic failure sequences?",
+  "repetitions": 5,
+  "seed": 1234,
+  "simulation": true,
+  "version": "1.0.0"
+}

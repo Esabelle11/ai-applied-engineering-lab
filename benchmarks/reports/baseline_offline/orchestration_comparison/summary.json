@@ -1,0 +1,63 @@
+{
+  "langgraph": {
+    "available_records": 0,
+    "completion_rate": null,
+    "correct_denominator": 0,
+    "correct_rate": null,
+    "cost_coverage": 0,
+    "cost_usd_total_known": null,
+    "distinct_cases": 0,
+    "error_categories": [],
+    "error_rate": null,
+    "latency_kind": [],
+    "latency_p50_seconds": null,
+    "latency_p95_seconds": null,
+    "mean_attempts": null,
+    "records": 20,
+    "tokens_coverage": 0,
+    "tokens_total_known": null,
+    "tool_success_rate": null
+  },
+  "manual_python": {
+    "available_records": 20,
+    "completion_rate": 1.0,
+    "correct_denominator": 20,
+    "correct_rate": 1.0,
+    "cost_coverage": 0,
+    "cost_usd_total_known": null,
+    "distinct_cases": 4,
+    "error_categories": [],
+    "error_rate": 0.0,
+    "latency_kind": [
+      "observed_wall"
+    ],
+    "latency_p50_seconds": 1e-06,
+    "latency_p95_seconds": 3e-06,
+    "mean_attempts": null,
+    "records": 20,
+    "tokens_coverage": 0,
+    "tokens_total_known": null,
+    "tool_success_rate": null
+  },
+  "sdk_state_graph": {
+    "available_records": 20,
+    "completion_rate": 1.0,
+    "correct_denominator": 20,
+    "correct_rate": 1.0,
+    "cost_coverage": 0,
+    "cost_usd_total_known": null,
+    "distinct_cases": 4,
+    "error_categories": [],
+    "error_rate": 0.0,
+    "latency_kind": [
+      "observed_wall"
+    ],
+    "latency_p50_seconds": 7e-06,
+    "latency_p95_seconds": 1.5e-05,
+    "mean_attempts": null,
+    "records": 20,
+    "tokens_coverage": 0,
+    "tokens_total_known": null,
+    "tool_success_rate": null
+  }
+}
