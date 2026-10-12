@@ -103,7 +103,6 @@ class HTTPJSONTransport:
         status = resp.status_code
         meta = dict(provider=self.provider, status_code=status, request_id=request_id)
         if status >= 400:
-            extra = dict(retry_after_seconds=retry_after(resp.headers))
             if status == 401:
                 raise AuthenticationError("Authentication rejected", **meta)
             if status == 403:
