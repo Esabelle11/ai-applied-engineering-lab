@@ -78,6 +78,7 @@ def generate() -> str:
             "",
             "```python",
             "from applied_ai import LLMRequest, Message, MockProvider",
+            "",
             'response = MockProvider(default_text="Hello!").generate(',
             '    LLMRequest("mock-model", (Message("user", "Hi"),))',
             ")",
