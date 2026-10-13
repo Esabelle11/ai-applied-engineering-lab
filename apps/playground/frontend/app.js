@@ -88,7 +88,17 @@
     $("result-attempts").textContent = format(result.attempts);
     $("result-latency").textContent = `${result.latency_ms} ms`;
     $("result-cost").textContent = result.cost_usd == null ? "N/A" : `$${result.cost_usd}`;
-    $("result-text").textContent = result.output;
+    const responseText = $("result-text");
+    const responseToggle = $("response-toggle");
+    responseText.classList.remove("expanded");
+    responseText.textContent = result.output;
+    responseToggle.hidden = false;
+    requestAnimationFrame(() => {
+      const overflowing = responseText.scrollHeight > responseText.clientHeight + 1;
+      responseToggle.hidden = !overflowing;
+      responseToggle.textContent = "Expand response";
+      responseToggle.setAttribute("aria-expanded", "false");
+    });
     $("result-validation").textContent = JSON.stringify(result.validation, null, 2);
     $("result-usage").textContent = result.usage == null ? "Provider usage unavailable" : JSON.stringify(result.usage, null, 2);
     $("result-notes").textContent = `${result.notes} · ${result.cost_note}`;
@@ -96,6 +106,13 @@
     result.trace.forEach((step, idx) => $("result-trace").append(element("div", "trace-item", `${idx + 1}. ${step.step} — ${step.status}${step.attempt ? ` (attempt ${step.attempt})` : ""}`)));
     $("run-state").textContent = "COMPLETED";
   }
+  $("response-toggle").addEventListener("click", () => {
+    const responseText = $("result-text");
+    const expanded = responseText.classList.toggle("expanded");
+    const toggle = $("response-toggle");
+    toggle.textContent = expanded ? "Collapse response" : "Expand response";
+    toggle.setAttribute("aria-expanded", String(expanded));
+  });
   $("run-button").addEventListener("click", async () => {
     const btn = $("run-button"); btn.disabled = true; btn.textContent = "Running…";
     $("run-state").textContent = "RUNNING";

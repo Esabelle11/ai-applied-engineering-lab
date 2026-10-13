@@ -60,7 +60,7 @@ Retries, fallback and rate limiting are opt-in via `ReliableProvider`. The base 
 ## Optional browser playground
 
 ```bash
-uv run --locked python -m apps.playground.backend
+uv run --locked --extra playground python -m apps.playground.backend
 # Open http://127.0.0.1:8765
 ```
 

@@ -180,7 +180,9 @@ def _live_generate(example: str, text: str) -> dict[str, Any]:
             LLMRequest(
                 selected.model,
                 (Message("user", text),),
-                max_output_tokens=160,
+                # Reasoning models may spend output budget before emitting text.
+                # Keep enough headroom for both reasoning and the bounded reply.
+                max_output_tokens=512,
                 timeout_seconds=15,
             )
         )

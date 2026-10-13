@@ -12,8 +12,8 @@ from applied_ai.providers.factory import ProviderFactory
 def run(*, allow_live: bool = False) -> GraphSnapshot:
     selected = ProviderFactory().create(allow_live=allow_live, mock_text="A balanced argument.")
     provider = selected.provider
-    print("provider:", provider)
-    print("selected:", selected)
+    # print("provider:", provider)
+    # print("selected:", selected)
 
     def speaker(role: str, question: str, next_node: str | None) -> GraphNode:
         def step(state: dict[str, str]) -> tuple[dict[str, str], str | None]:
@@ -25,7 +25,7 @@ def run(*, allow_live: bool = False) -> GraphSnapshot:
             # print("prompt:", prompt)
             answer = provider.generate(LLMRequest(selected.model, (Message("user", prompt),))).text
             # print("answer:", answer)
-            print("")
+            # print("")
             return {role: answer}, next_node
 
         return GraphNode(step)

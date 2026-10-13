@@ -29,6 +29,7 @@ def exact_match(actual: str, expected: str) -> bool:
 
 
 def evaluate(cases: Sequence[EvalCase], predict: Callable[[str], str]) -> EvalReport:
+
     failed = tuple(
         case.question for case in cases if not exact_match(predict(case.question), case.expected)
     )

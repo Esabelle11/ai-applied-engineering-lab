@@ -32,7 +32,7 @@ class TaskRouter:
         if task not in self._targets:
             raise ValueError(f"Unconfigured route: {task}")
         target = self._targets[task]
-        print("request:", request)
+        # print("request:", request)
         if request.response_format and not target.provider.capabilities.structured_output:
             raise CapabilityNotSupportedError(
                 "Selected provider does not support structured output",

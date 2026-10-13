@@ -16,7 +16,7 @@ uv sync --locked --group dev --extra playground --extra providers
 uv run --locked python -m apps.playground.backend
 ```
 
-Open **http://127.0.0.1:8765**. The server binds to loopback by default. No API key, Docker, Node.js, or build step is necessary for the offline demos. Frontend assets are first-party static HTML/CSS/JS; they do not load external scripts.
+Open **[http://127.0.0.1:8765](http://127.0.0.1:8765)**. The server binds to loopback by default. No API key, Docker, Node.js, or build step is necessary for the offline demos. Frontend assets are first-party static HTML/CSS/JS; they do not load external scripts.
 
 Run all offline checks:
 
@@ -31,31 +31,37 @@ uv run --offline --locked python scripts/run_all_case_studies.py
 uv run --offline --locked python scripts/run_benchmarks.py
 ```
 
+
+
 ## UI navigation
 
-| View | Feature | Source |
-|---|---|---|
-| Overview | Status, demos, quota, architecture boundaries | Whitelisted server registry |
-| Pattern library | Search and filter handbook manifests | `engineering_patterns/**/pattern.yaml` (metadata only) |
-| Playground | Run six curated offline examples | Existing `applied_ai.*` SDK utilities |
-| Compare | Retry and prompt-construction side-by-side examples | Same synthetic controls per branch |
-| Evidence | Published Phase 5 metric tables and SHA256 hashes | `benchmarks/reports/baseline_offline/` |
 
-Available playground examples: provider-neutral generation; prompt-template rendering; transient 429/retry recovery; lexical retrieval with source IDs; three-node state graph; and fixed-fixture math verification. The math example **only accepts `Compute 17 * 23 + 9`** and will reject other input, rather than claim general math accuracy. Retrieval is **lexical**, not embedding/vector retrieval. Evidence tables contain **synthetic observations**, not live-model benchmark claims.
+| View            | Feature                                             | Source                                                 |
+| --------------- | --------------------------------------------------- | ------------------------------------------------------ |
+| Overview        | Status, demos, quota, architecture boundaries       | Whitelisted server registry                            |
+| Pattern library | Search and filter handbook manifests                | `engineering_patterns/**/pattern.yaml` (metadata only) |
+| Playground      | Run six curated offline examples                    | Existing `applied_ai.*` SDK utilities                  |
+| Compare         | Retry and prompt-construction side-by-side examples | Same synthetic controls per branch                     |
+| Evidence        | Published Phase 5 metric tables and SHA256 hashes   | `benchmarks/reports/baseline_offline/`                 |
+
+
+Available playground examples: provider-neutral generation; prompt-template rendering; transient 429/retry recovery; lexical retrieval with source IDs; three-node state graph; and fixed-fixture math verification. The math example **only accepts** `Compute 17 * 23 + 9` and will reject other input, rather than claim general math accuracy. Retrieval is **lexical**, not embedding/vector retrieval. Evidence tables contain **synthetic observations**, not live-model benchmark claims.
 
 ## API boundaries
 
-| Method | Path | Policy |
-|---|---|---|
-| GET | `/api/health` | Minimal status only |
-| GET | `/api/settings` | Authorization; returns flags and remaining quota, never keys |
-| GET | `/api/catalog` | Authorization; read-only sanitized metadata, no file paths |
-| GET | `/api/reports` | Authorization; committed offline summaries only |
-| POST | `/api/run` | Authorization, input validation, allowlist, run-unit quota |
-| POST | `/api/compare` | Authorization, input validation, allowlist, two-unit quota |
-| GET | `/static/...` | Only bundled frontend assets |
 
-`POST /api/run` JSON: `{"example_id":"generation", "value":"Explain RAG", "live":false}`. The response includes `result` and process-local `quota`. `POST /api/compare` JSON: `{"comparison_id":"retry_recovery", "value":"Explain reliability"}`. Compares **synthetic fixtures** only; this does not establish production superiority. Inputs are at most 500 characters; response tokens on optional live generation are capped at 160. The UI displays attempt counts, wall-clock sample latency, execution trace, validation outcomes and usage when available. **Missing measured cost is null, not $0.**
+| Method | Path            | Policy                                                       |
+| ------ | --------------- | ------------------------------------------------------------ |
+| GET    | `/api/health`   | Minimal status only                                          |
+| GET    | `/api/settings` | Authorization; returns flags and remaining quota, never keys |
+| GET    | `/api/catalog`  | Authorization; read-only sanitized metadata, no file paths   |
+| GET    | `/api/reports`  | Authorization; committed offline summaries only              |
+| POST   | `/api/run`      | Authorization, input validation, allowlist, run-unit quota   |
+| POST   | `/api/compare`  | Authorization, input validation, allowlist, two-unit quota   |
+| GET    | `/static/...`   | Only bundled frontend assets                                 |
+
+
+`POST /api/run` JSON: `{"example_id":"generation", "value":"Explain RAG", "live":false}`. The response includes `result` and process-local `quota`. `POST /api/compare` JSON: `{"comparison_id":"retry_recovery", "value":"Explain reliability"}`. Compares **synthetic fixtures** only; this does not establish production superiority. Inputs are at most 500 characters; response tokens on optional live generation are capped at 512. The budget leaves room for reasoning-model output before the bounded reply. The UI displays attempt counts, wall-clock sample latency, execution trace, validation outcomes and usage when available. **Missing measured cost is null, not $0.**
 
 ## Access & secrets
 
@@ -80,8 +86,16 @@ OPENROUTER_API_KEY=...  # real secret
 
 # shell environment: use a long random token
 export PLAYGROUND_TOKEN="$(python -c 'import secrets; print(secrets.token_urlsafe(32))')"
+export PLAYGROUND_TOKEN="$(uv run python -c 'import secrets; print(secrets.token_urlsafe(32))')"
+printf %s "$PLAYGROUND_TOKEN" | pbcopy
+printf 'token length: %s\n' "${#PLAYGROUND_TOKEN}"
 uv run --locked python -m apps.playground.backend --allow-live
+
+# or OPENROUTER_API_KEY is set in .env file
+uv run --env-file .env --locked --extra playground python -m apps.playground.backend --allow-live
 ```
+
+
 
 Use the **Access** button and enable the live toggle only after the server has started with `--allow-live`. The provider/model are read server-side from `.env`; the web client cannot change the provider endpoint, supply an arbitrary model, inspect keys, or run other arbitrary operations. Live calls may incur costs and quotas; even models with `:free` names can be unavailable or rate-limited. The server never makes live requests on page load. SDK provider-specific failures return normalized categories rather than upstream credential-bearing bodies.
 
