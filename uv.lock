@@ -66,6 +66,7 @@ openrouter = [
 ]
 playground = [
     { name = "fastapi" },
+    { name = "httpx2" },
     { name = "pyyaml" },
     { name = "uvicorn" },
 ]
@@ -95,6 +96,7 @@ requires-dist = [
     { name = "httpx", marker = "extra == 'openai'", specifier = ">=0.27,<1" },
     { name = "httpx", marker = "extra == 'openrouter'", specifier = ">=0.27,<1" },
     { name = "httpx", marker = "extra == 'providers'", specifier = ">=0.27,<1" },
+    { name = "httpx2", marker = "extra == 'playground'", specifier = ">=2.13,<3" },
     { name = "jsonschema", specifier = ">=4.23,<5" },
     { name = "langgraph", marker = "extra == 'benchmarks'", specifier = ">=0.3,<2" },
     { name = "pyyaml", marker = "extra == 'playground'", specifier = ">=6,<7" },
