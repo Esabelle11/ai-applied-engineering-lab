@@ -1,0 +1,8 @@
+id: optimization.concurrency_control
+name: Concurrency Control
+category: 07_optimization
+status: demo
+requires_api_key: false
+supports_offline_testing: true
+entrypoint: run.py
+started_on: "15/10/2026"

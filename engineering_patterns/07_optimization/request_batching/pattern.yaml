@@ -1,0 +1,8 @@
+id: optimization.request_batching
+name: Request Batching
+category: 07_optimization
+status: demo
+requires_api_key: false
+supports_offline_testing: true
+entrypoint: run.py
+started_on: "15/10/2026"

@@ -34,3 +34,20 @@ def evaluate(cases: Sequence[EvalCase], predict: Callable[[str], str]) -> EvalRe
         case.question for case in cases if not exact_match(predict(case.question), case.expected)
     )
     return EvalReport(len(cases) - len(failed), len(cases), failed)
+
+
+from applied_ai.evaluation.observability import (  # noqa: E402, F401
+    DatasetItem,
+    TraceEvent,
+    TraceLog,
+    benchmark,
+    estimate_cost,
+    failure_counts,
+    grounded,
+    judge_response,
+    regressions,
+    retrieval_recall,
+    score_dataset,
+    token_total,
+    tool_call_passed,
+)

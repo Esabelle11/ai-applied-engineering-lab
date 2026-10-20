@@ -1,0 +1,8 @@
+id: agent_orchestration.human_in_the_loop
+name: Human In The Loop
+category: 03_agent_orchestration
+status: demo
+requires_api_key: false
+supports_offline_testing: true
+entrypoint: run.py
+started_on: "15/10/2026"

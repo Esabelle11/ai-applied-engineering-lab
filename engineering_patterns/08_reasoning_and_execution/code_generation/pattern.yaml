@@ -1,0 +1,8 @@
+id: reasoning_and_execution.code_generation
+name: Code Generation
+category: 08_reasoning_and_execution
+status: demo
+requires_api_key: false
+supports_offline_testing: true
+entrypoint: run.py
+started_on: "15/10/2026"

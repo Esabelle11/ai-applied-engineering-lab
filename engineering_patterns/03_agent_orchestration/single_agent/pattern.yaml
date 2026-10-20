@@ -1,0 +1,8 @@
+id: agent_orchestration.single_agent
+name: Single Agent
+category: 03_agent_orchestration
+status: demo
+requires_api_key: false
+supports_offline_testing: true
+entrypoint: run.py
+started_on: "15/10/2026"

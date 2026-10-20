@@ -6,6 +6,55 @@ from collections.abc import Callable, Mapping
 from dataclasses import dataclass
 from types import MappingProxyType
 
+from applied_ai.orchestration.primitives import (
+    Agent,
+    AgentOutcome,
+    ApprovalGate,
+    ApprovalRequest,
+    CheckpointStore,
+    Handoff,
+    LoopDecision,
+    LoopResult,
+    Plan,
+    RecoveryResult,
+    ToolRegistry,
+    choose_route,
+    execute_plan,
+    handoff,
+    merge_outcomes,
+    run_agent,
+    run_manual_loop,
+    run_parallel,
+    run_sequential,
+    run_with_recovery,
+)
+
+__all__ = [
+    "Agent",
+    "AgentOutcome",
+    "ApprovalGate",
+    "ApprovalRequest",
+    "CheckpointStore",
+    "GraphNode",
+    "GraphSnapshot",
+    "Handoff",
+    "LoopDecision",
+    "LoopResult",
+    "Plan",
+    "RecoveryResult",
+    "StateGraph",
+    "ToolRegistry",
+    "choose_route",
+    "execute_plan",
+    "handoff",
+    "merge_outcomes",
+    "run_agent",
+    "run_manual_loop",
+    "run_parallel",
+    "run_sequential",
+    "run_with_recovery",
+]
+
 
 @dataclass(frozen=True, slots=True)
 class GraphSnapshot:

@@ -1,0 +1,8 @@
+id: prompt_engineering.few_shot_prompting
+name: Few Shot Prompting
+category: 01_prompt_engineering
+status: demo
+requires_api_key: false
+supports_offline_testing: true
+entrypoint: run.py
+started_on: "15/10/2026"

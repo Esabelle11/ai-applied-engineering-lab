@@ -76,3 +76,16 @@ class CachingProvider:
 
     def generate(self, request: LLMRequest) -> LLMResponse:
         return self.generate_with_cache_info(request).response
+
+
+from applied_ai.optimization.primitives import (  # noqa: E402, F401
+    ModelOption,
+    SemanticCache,
+    batch_items,
+    bounded_map,
+    cheapest_qualified,
+    compress_text,
+    estimate_tokens,
+    fastest_qualified,
+    pareto_frontier,
+)

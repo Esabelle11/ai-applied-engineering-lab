@@ -68,6 +68,16 @@ TokenUsage(input_tokens: 'int | None' = None, output_tokens: 'int | None' = None
 
 ## Provider abstraction
 
+### `AppliedAIClient`
+
+Defined in [`applied_ai.client`](../src/applied_ai/client.py).
+
+No public class-level docstring; inspect implementation.
+
+```python
+AppliedAIClient(provider: 'LLMProvider', model: 'str') -> 'None'
+```
+
 ### `LLMProvider`
 
 Defined in [`applied_ai.core.protocols`](../src/applied_ai/core/protocols.py).
@@ -140,6 +150,16 @@ Validated non-secret settings. No .env or API keys are loaded here.
 
 ```python
 RuntimeConfig(environment: 'str' = 'development', log_level: 'str' = 'INFO', request_timeout_seconds: 'float' = 30.0, max_retries: 'int' = 3) -> None
+```
+
+### `Settings`
+
+Defined in [`applied_ai.settings`](../src/applied_ai/settings.py).
+
+Settings(provider: 'str' = 'mock', model: 'str' = 'mock-model', request_timeout_seconds: 'float' = 30.0, max_retries: 'int' = 2, allow_live: 'bool' = False)
+
+```python
+Settings(provider: 'str' = 'mock', model: 'str' = 'mock-model', request_timeout_seconds: 'float' = 30.0, max_retries: 'int' = 2, allow_live: 'bool' = False) -> None
 ```
 
 ## Minimal offline example

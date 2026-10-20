@@ -67,3 +67,42 @@ def answer_with_context(
     )
     result = provider.generate(LLMRequest(model, (Message("user", prompt),)))
     return GroundedAnswer(result, tuple(d.id for d in hits))
+
+
+from applied_ai.knowledge.primitives import (  # noqa: E402
+    ContextWindow,
+    LongTermMemory,
+    RetrievalMetrics,
+    VectorRetriever,
+    build_context,
+    chunk_text,
+    citations_supported,
+    cosine_similarity,
+    embed_text,
+    hybrid_search,
+    ingest_records,
+    measure_retrieval,
+    rerank,
+    rewrite_query,
+)
+
+__all__ = [
+    "ContextWindow",
+    "Document",
+    "GroundedAnswer",
+    "LexicalRetriever",
+    "LongTermMemory",
+    "RetrievalMetrics",
+    "VectorRetriever",
+    "answer_with_context",
+    "build_context",
+    "chunk_text",
+    "citations_supported",
+    "cosine_similarity",
+    "embed_text",
+    "hybrid_search",
+    "ingest_records",
+    "measure_retrieval",
+    "rerank",
+    "rewrite_query",
+]

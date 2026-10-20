@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
 import yaml
@@ -16,6 +17,7 @@ REQUIRED = {
     "requires_api_key",
     "supports_offline_testing",
     "entrypoint",
+    "started_on",
 }
 
 
@@ -69,6 +71,10 @@ def validate() -> list[str]:
             for key in ("requires_api_key", "supports_offline_testing"):
                 if not isinstance(loaded[key], bool):
                     errors.append(f"{metadata_path}: {key} must be a boolean")
+            if not isinstance(loaded["started_on"], str) or not re.fullmatch(
+                r"\d{2}/\d{2}/\d{4}", loaded["started_on"]
+            ):
+                errors.append(f"{metadata_path}: started_on must use DD/MM/YYYY")
 
     if patterns < 1:
         errors.append("At least one concrete example pattern is required")

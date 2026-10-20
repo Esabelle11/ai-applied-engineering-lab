@@ -1,0 +1,8 @@
+id: agent_orchestration.checkpoint_and_resume
+name: Checkpoint And Resume
+category: 03_agent_orchestration
+status: demo
+requires_api_key: false
+supports_offline_testing: true
+entrypoint: run.py
+started_on: "15/10/2026"

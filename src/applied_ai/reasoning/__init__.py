@@ -34,3 +34,15 @@ class VerificationLoop:
                 return VerificationResult(answer, True, attempt)
             feedback = "Previous answer failed independent verification. Try again."
         return VerificationResult(answer, False, self.max_attempts)
+
+
+from applied_ai.reasoning.primitives import (  # noqa: E402, F401
+    critique,
+    iterate,
+    recover_execution,
+    tool_reason,
+    validate_python_syntax,
+    verify_independently,
+    verify_math,
+    within_budget,
+)

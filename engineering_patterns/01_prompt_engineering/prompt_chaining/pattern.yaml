@@ -6,6 +6,7 @@ level: intermediate
 requires_api_key: false
 supports_offline_testing: true
 entrypoint: run.py
+started_on: "11/10/2026"
 validation:
   offline_test: tests/test_phase3_patterns.py
   benchmarks: false

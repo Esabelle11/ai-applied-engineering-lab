@@ -1,0 +1,8 @@
+id: knowledge_and_context.citation_and_grounding
+name: Citation And Grounding
+category: 04_knowledge_and_context
+status: demo
+requires_api_key: false
+supports_offline_testing: true
+entrypoint: run.py
+started_on: "15/10/2026"

@@ -1,0 +1,8 @@
+id: optimization.latency_optimization
+name: Latency Optimization
+category: 07_optimization
+status: demo
+requires_api_key: false
+supports_offline_testing: true
+entrypoint: run.py
+started_on: "15/10/2026"

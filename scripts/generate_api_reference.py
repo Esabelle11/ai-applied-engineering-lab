@@ -22,9 +22,14 @@ SECTIONS = {
         "StructuredOutputSpec",
         "ProviderCapabilities",
     },
-    "Provider abstraction": {"LLMProvider", "MockProvider", "ProviderFactory"},
+    "Provider abstraction": {
+        "AppliedAIClient",
+        "LLMProvider",
+        "MockProvider",
+        "ProviderFactory",
+    },
     "Reliability": {"ReliableProvider", "RetryPolicy", "LLMError"},
-    "Configuration": {"RuntimeConfig"},
+    "Configuration": {"RuntimeConfig", "Settings"},
 }
 
 

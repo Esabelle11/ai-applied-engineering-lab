@@ -26,7 +26,7 @@ def generate(root: Path = ROOT) -> str:
     for meta in sorted((root / "engineering_patterns").glob("0[1-8]_*/**/pattern.yaml")):
         data: Any = yaml.safe_load(meta.read_text(encoding="utf-8"))
         if not isinstance(data, dict) or not all(
-            isinstance(data.get(k), str) for k in ("id", "name", "entrypoint")
+            isinstance(data.get(k), str) for k in ("id", "name", "entrypoint", "started_on")
         ):
             raise ValueError(f"Invalid pattern manifest: {meta}")
         entrypoint = data["entrypoint"]
@@ -43,7 +43,7 @@ def generate(root: Path = ROOT) -> str:
         rows.append(
             (
                 category,
-                f"| [{display}]({link}) | `{data['id']}` | {'Yes' if data.get('supports_offline_testing') is True else 'No'} |",
+                f"| [{display}]({link}) | `{data['id']}` | {data['started_on']} | {'Yes' if data.get('supports_offline_testing') is True else 'No'} |",
             )
         )
     if not rows:
@@ -63,8 +63,8 @@ def generate(root: Path = ROOT) -> str:
                 "",
                 f"SDK owner(s): `{owner}`",
                 "",
-                "| Pattern | ID | Offline |",
-                "| --- | --- | --- |",
+                "| Pattern | ID | Started | Offline |",
+                "| --- | --- | --- | --- |",
                 *group,
                 "",
             ]

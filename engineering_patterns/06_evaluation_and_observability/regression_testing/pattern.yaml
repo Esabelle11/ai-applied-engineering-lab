@@ -1,0 +1,8 @@
+id: evaluation_and_observability.regression_testing
+name: Regression Testing
+category: 06_evaluation_and_observability
+status: demo
+requires_api_key: false
+supports_offline_testing: true
+entrypoint: run.py
+started_on: "15/10/2026"

@@ -1,0 +1,8 @@
+id: model_integration.local_model_inference
+name: Local Model Inference
+category: 02_model_integration
+status: demo
+requires_api_key: false
+supports_offline_testing: true
+entrypoint: run.py
+started_on: "15/10/2026"

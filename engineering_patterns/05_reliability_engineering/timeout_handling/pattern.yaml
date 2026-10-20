@@ -1,0 +1,8 @@
+id: reliability_engineering.timeout_handling
+name: Timeout Handling
+category: 05_reliability_engineering
+status: demo
+requires_api_key: false
+supports_offline_testing: true
+entrypoint: run.py
+started_on: "15/10/2026"
