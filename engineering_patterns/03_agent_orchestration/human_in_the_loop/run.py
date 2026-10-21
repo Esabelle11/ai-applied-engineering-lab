@@ -7,10 +7,12 @@ from applied_ai.orchestration import ApprovalGate
 
 def request_then_apply(approved: bool) -> str:
     gate = ApprovalGate()
-    request = gate.request("deploy-1", "deploy production configuration", {"environment": "production"})
+    request = gate.request(
+        "deploy-1", "deploy production configuration", {"environment": "production"}
+    )
     gate.decide(request.request_id, approved)
     return "applied" if gate.approved(request.request_id) else "rejected"
-   
+
 
 def main() -> None:
     print(request_then_apply(True))

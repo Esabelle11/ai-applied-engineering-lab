@@ -63,7 +63,9 @@ def run_sequential(agents: Sequence[Agent], state: State) -> tuple[AgentOutcome,
     return tuple(outcomes)
 
 
-async def run_parallel(agents: Sequence[Agent], state: State, *, max_concurrency: int = 3) -> tuple[AgentOutcome, ...]:
+async def run_parallel(
+    agents: Sequence[Agent], state: State, *, max_concurrency: int = 3
+) -> tuple[AgentOutcome, ...]:
     """Run independent agents concurrently; outcomes do not merge conflicting updates."""
     if not agents or max_concurrency < 1:
         raise ValueError("Agents must be present and max_concurrency must be positive")
@@ -106,7 +108,11 @@ class Handoff:
     state: Mapping[str, Any]
 
     def __post_init__(self) -> None:
-        if not self.from_agent.strip() or not self.to_agent.strip() or self.from_agent == self.to_agent:
+        if (
+            not self.from_agent.strip()
+            or not self.to_agent.strip()
+            or self.from_agent == self.to_agent
+        ):
             raise ValueError("Handoff requires distinct, non-empty agent names")
         object.__setattr__(self, "state", _frozen_state(self.state))
 
@@ -211,7 +217,9 @@ class Plan:
             raise ValueError("Plan requires one or more non-empty steps")
 
 
-def execute_plan(plan: Plan, executor: Callable[[str, State], Mapping[str, Any]], state: State) -> Mapping[str, Any]:
+def execute_plan(
+    plan: Plan, executor: Callable[[str, State], Mapping[str, Any]], state: State
+) -> Mapping[str, Any]:
     """Execute a caller-owned plan step by step and return the resulting state."""
     current = dict(state)
     for step in plan.steps:
@@ -248,7 +256,10 @@ class RecoveryResult:
 
 
 def run_with_recovery(
-    operation: Callable[[], Any], *, max_attempts: int = 2, retryable: tuple[type[Exception], ...] = (Exception,)
+    operation: Callable[[], Any],
+    *,
+    max_attempts: int = 2,
+    retryable: tuple[type[Exception], ...] = (Exception,),
 ) -> RecoveryResult:
     """Retry a caller-owned operation a bounded number of times and retain error types."""
     if max_attempts < 1 or not retryable:

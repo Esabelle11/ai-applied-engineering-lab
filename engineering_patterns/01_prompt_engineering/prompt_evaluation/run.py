@@ -55,8 +55,12 @@ def main() -> None:
     def build(item: str) -> str:
         return f"Return uppercase: {item}"
 
-    provider = MockProvider(responses={"Return uppercase: cat": "CAT", "Return uppercase: dog": "DOG"})
-    report = evaluate_prompt(provider, "mock", build, (PromptTestCase("cat", "CAT"), PromptTestCase("dog", "DOG")))
+    provider = MockProvider(
+        responses={"Return uppercase: cat": "CAT", "Return uppercase: dog": "DOG"}
+    )
+    report = evaluate_prompt(
+        provider, "mock", build, (PromptTestCase("cat", "CAT"), PromptTestCase("dog", "DOG"))
+    )
     print(f"accuracy={report.accuracy:.0%}")
 
 

@@ -39,7 +39,13 @@ def test_parallel_merge_rejects_conflicting_updates() -> None:
 
 
 def test_route_handoff_and_checkpoint_are_explicit() -> None:
-    assert choose_route({"urgent": True}, (("urgent", lambda state: bool(state["urgent"])), ("normal", lambda _: False))) == "urgent"
+    assert (
+        choose_route(
+            {"urgent": True},
+            (("urgent", lambda state: bool(state["urgent"])), ("normal", lambda _: False)),
+        )
+        == "urgent"
+    )
     assert handoff("triage", "specialist", {"case": "1"}).to_agent == "specialist"
     store = CheckpointStore()
     store.save("one", {"stage": "review"})
@@ -51,7 +57,8 @@ def test_route_handoff_and_checkpoint_are_explicit() -> None:
 
 def test_manual_loop_plan_tools_approval_and_recovery() -> None:
     result = run_manual_loop(
-        lambda state: LoopDecision("finish", {"answer": state["input"]}, completed=True), {"input": "ok"}
+        lambda state: LoopDecision("finish", {"answer": state["input"]}, completed=True),
+        {"input": "ok"},
     )
     assert result.completed and result.state["answer"] == "ok"
     assert execute_plan(Plan(("one",)), lambda step, _: {step: "done"}, {})["one"] == "done"
@@ -79,4 +86,8 @@ def test_manual_loop_plan_tools_approval_and_recovery() -> None:
         return "done"
 
     recovered = run_with_recovery(operation, max_attempts=2, retryable=(ConnectionError,))
-    assert (recovered.value, recovered.attempts, recovered.errors) == ("done", 2, ("ConnectionError",))
+    assert (recovered.value, recovered.attempts, recovered.errors) == (
+        "done",
+        2,
+        ("ConnectionError",),
+    )

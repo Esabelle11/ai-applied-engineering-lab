@@ -4,7 +4,11 @@ from applied_ai.knowledge import Document, rerank
 
 
 def main() -> None:
-    docs = ( Document("notsure", "generation retrieval"), Document("weak", "generation"), Document("strong", "retrieval generation"))
+    docs = (
+        Document("notsure", "generation retrieval"),
+        Document("weak", "generation"),
+        Document("strong", "retrieval generation"),
+    )
     print([document.id for document in rerank("retrieval generation", docs)])
 
 

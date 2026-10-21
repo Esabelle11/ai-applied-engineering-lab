@@ -16,7 +16,8 @@ class PromptVersion:
 
     def __post_init__(self) -> None:
         if not all(
-            isinstance(value, str) and value.strip() for value in (self.name, self.version, self.template)
+            isinstance(value, str) and value.strip()
+            for value in (self.name, self.version, self.template)
         ):
             raise ValueError("Prompt version fields must be non-empty text")
         PromptTemplate(self.template)

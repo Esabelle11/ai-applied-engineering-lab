@@ -45,7 +45,10 @@ def normalize_response(payload: Mapping[str, Any], *, provider: str, model: str)
 
 def main() -> None:
     response = normalize_response(
-        {"text": "Normalized answer", "usage": {"input_tokens": 4, "output_tokens": 2, "total_tokens": 6}},
+        {
+            "text": "Normalized answer",
+            "usage": {"input_tokens": 4, "output_tokens": 2, "total_tokens": 6},
+        },
         provider="example",
         model="example-model",
     )

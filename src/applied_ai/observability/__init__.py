@@ -30,7 +30,9 @@ class EventRecorder:
         try:
             result = operation() if callable(operation) else operation
         except Exception as exc:
-            self.record(RequestEvent(provider, model, monotonic() - started, False, type(exc).__name__))
+            self.record(
+                RequestEvent(provider, model, monotonic() - started, False, type(exc).__name__)
+            )
             raise
         else:
             self.record(RequestEvent(provider, model, monotonic() - started, True))

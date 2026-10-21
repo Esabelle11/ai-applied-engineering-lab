@@ -22,7 +22,7 @@ def build_few_shot_prompt(instruction: str, examples: tuple[Example, ...], query
     blocks = [f"Instruction:\n{instruction.strip()}", "Examples:"]
     for index, example in enumerate(examples, 1):
         blocks.append(
-            f"<example id=\"{index}\">\nInput: {example.input}\nOutput: {example.output}\n</example>"
+            f'<example id="{index}">\nInput: {example.input}\nOutput: {example.output}\n</example>'
         )
     blocks.append(f"Now solve this new input:\nInput: {query.strip()}\nOutput:")
     return "\n\n".join(blocks)

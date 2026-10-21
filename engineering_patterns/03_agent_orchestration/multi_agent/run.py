@@ -9,7 +9,7 @@ def run_research_and_review(question: str) -> str:
     researcher = Agent("researcher", lambda state: {"draft": f"Draft: {state['question']}"})
     reviewer = Agent("reviewer", lambda state: {"answer": f"Reviewed {state['draft']}"})
     outcomes = run_sequential((researcher, reviewer), {"question": question})
-    print("outcomes: ",outcomes)
+    print("outcomes: ", outcomes)
     return str(outcomes[-1].state["answer"])
 
 

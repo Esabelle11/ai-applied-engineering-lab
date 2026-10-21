@@ -7,7 +7,9 @@ def main() -> None:
     print(
         [
             document.id
-            for document in ingest_records(({"id": "rag", "text": "RAG retrieves context."},{"id": "rag cc", "text": "xxx."}))
+            for document in ingest_records(
+                ({"id": "rag", "text": "RAG retrieves context."}, {"id": "rag cc", "text": "xxx."})
+            )
         ]
     )
 

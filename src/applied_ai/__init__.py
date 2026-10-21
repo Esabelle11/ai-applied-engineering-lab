@@ -1,7 +1,7 @@
 """Public SDK exports for Applied AI Engineering Lab Phase 7."""
 
-from applied_ai.config import RuntimeConfig
 from applied_ai.client import AppliedAIClient
+from applied_ai.config import RuntimeConfig
 from applied_ai.core import (
     LLMError,
     LLMProvider,

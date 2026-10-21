@@ -8,7 +8,9 @@ from applied_ai.core.protocols import LLMProvider
 from applied_ai.providers.ollama_provider import OllamaProvider
 
 
-def create_local_provider(*, live: bool = False, base_url: str = "http://127.0.0.1:11434") -> LLMProvider:
+def create_local_provider(
+    *, live: bool = False, base_url: str = "http://127.0.0.1:11434"
+) -> LLMProvider:
     """Return a mock by default; a local server is contacted only with explicit opt-in."""
     if not live:
         return MockProvider(default_text="Local-model demonstration response")

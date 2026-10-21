@@ -16,7 +16,9 @@ class ModelCall:
     request: LLMRequest
 
 
-async def execute_parallel(calls: Sequence[ModelCall], *, max_concurrency: int = 3) -> list[LLMResponse]:
+async def execute_parallel(
+    calls: Sequence[ModelCall], *, max_concurrency: int = 3
+) -> list[LLMResponse]:
     """Use bounded worker threads for existing synchronous providers; do not assume thread safety."""
     if not calls or max_concurrency < 1:
         raise ValueError("calls must be non-empty and max_concurrency must be positive")
@@ -33,8 +35,14 @@ def main() -> None:
     from applied_ai import Message, MockProvider
 
     calls = (
-        ModelCall(MockProvider(default_text="fast"), LLMRequest("mock-fast", (Message("user", "Summarize"),))),
-        ModelCall(MockProvider(default_text="careful"), LLMRequest("mock-careful", (Message("user", "Analyze"),))),
+        ModelCall(
+            MockProvider(default_text="fast"),
+            LLMRequest("mock-fast", (Message("user", "Summarize"),)),
+        ),
+        ModelCall(
+            MockProvider(default_text="careful"),
+            LLMRequest("mock-careful", (Message("user", "Analyze"),)),
+        ),
     )
     print([response.text for response in asyncio.run(execute_parallel(calls, max_concurrency=2))])
 

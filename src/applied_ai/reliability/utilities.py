@@ -36,7 +36,7 @@ def full_jitter(max_delay_seconds: float, fraction: float) -> float:
     return max_delay_seconds * fraction
 
 
-class RequestQueue:
+class RequestQueue[T]:
     """Bounded in-memory FIFO queue; callers decide when and how to drain it."""
 
     def __init__(self, *, max_size: int = 100) -> None:

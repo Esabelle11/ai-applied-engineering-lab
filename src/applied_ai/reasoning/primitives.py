@@ -45,7 +45,9 @@ def verify_math(expression: str, expected: int | float) -> bool:
         for node in ast.walk(tree)
     ):
         raise ValueError("Only basic arithmetic is allowed")
-    return eval(compile(tree, "<math>", "eval"), {"__builtins__": {}}, {}) == expected  # noqa: S307
+    return bool(
+        eval(compile(tree, "<math>", "eval"), {"__builtins__": {}}, {}) == expected  # noqa: S307
+    )
 
 
 def verify_independently(answer: str, checks: Sequence[Callable[[str], bool]]) -> bool:

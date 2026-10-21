@@ -48,9 +48,17 @@ def main() -> None:
     weather = ToolSpec(
         "weather_for_city",
         "Return a synthetic temperature for a city.",
-        {"type": "object", "properties": {"city": {"type": "string", "minLength": 1}}, "required": ["city"], "additionalProperties": False},
+        {
+            "type": "object",
+            "properties": {"city": {"type": "string", "minLength": 1}},
+            "required": ["city"],
+            "additionalProperties": False,
+        },
     )
-    result = execute_tool_call(ToolCall("weather_for_city", {"city": "Kuala Lumpur"}), {"weather_for_city": (weather, lambda city: f"{city}: 31°C")})
+    result = execute_tool_call(
+        ToolCall("weather_for_city", {"city": "Kuala Lumpur"}),
+        {"weather_for_city": (weather, lambda city: f"{city}: 31°C")},
+    )
     print(result)
 
 

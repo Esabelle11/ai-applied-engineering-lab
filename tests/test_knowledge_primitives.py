@@ -35,7 +35,9 @@ def test_vector_hybrid_and_rerank_results_are_stable() -> None:
 
 
 def test_context_memory_grounding_and_metrics() -> None:
-    window = build_context((Document("one", "short"), Document("two", "longer source")), max_chars=14)
+    window = build_context(
+        (Document("one", "short"), Document("two", "longer source")), max_chars=14
+    )
     assert window.included_ids == ("one",)
     assert window.omitted_ids == ("two",)
     assert rewrite_query("Could you tell me RAG?") == "RAG"

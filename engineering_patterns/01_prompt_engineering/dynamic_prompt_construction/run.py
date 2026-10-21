@@ -45,7 +45,10 @@ def build_dynamic_prompt(
 def main() -> None:
     prompt = build_dynamic_prompt(
         "Answer using the most relevant context.",
-        (PromptSection("policy", "Cite source IDs.", 2), PromptSection("history", "Older chat context.", 0)),
+        (
+            PromptSection("policy", "Cite source IDs.", 2),
+            PromptSection("history", "Older chat context.", 0),
+        ),
         max_chars=100,
     )
     print(prompt.text)

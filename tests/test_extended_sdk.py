@@ -2,8 +2,6 @@ from __future__ import annotations
 
 from pathlib import Path
 
-import pytest
-
 from applied_ai import AppliedAIClient, Message, MockProvider, Settings
 from applied_ai.memory import ConversationMemory
 from applied_ai.observability import EventRecorder
@@ -44,7 +42,9 @@ def test_memory_registry_and_observability() -> None:
 
 def test_all_roadmap_pattern_manifests_have_runnable_entrypoints() -> None:
     root = Path(__file__).parents[1] / "engineering_patterns"
-    patterns = [path for category in root.glob("0[1-8]_*") for path in category.iterdir() if path.is_dir()]
+    patterns = [
+        path for category in root.glob("0[1-8]_*") for path in category.iterdir() if path.is_dir()
+    ]
     assert len(patterns) >= 98
     for pattern in patterns:
         assert (pattern / "README.md").is_file()

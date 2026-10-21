@@ -5,8 +5,8 @@ from __future__ import annotations
 from collections.abc import Sequence
 
 from applied_ai.core import LLMRequest, LLMResponse, Message
-from applied_ai.providers.factory import ProviderFactory
 from applied_ai.core.protocols import LLMProvider
+from applied_ai.providers.factory import ProviderFactory
 
 
 class AppliedAIClient:
@@ -17,7 +17,7 @@ class AppliedAIClient:
         self.model = model
 
     @classmethod
-    def from_environment(cls, *, allow_live: bool = False) -> "AppliedAIClient":
+    def from_environment(cls, *, allow_live: bool = False) -> AppliedAIClient:
         selection = ProviderFactory().create(allow_live=allow_live)
         return cls(selection.provider, selection.model)
 

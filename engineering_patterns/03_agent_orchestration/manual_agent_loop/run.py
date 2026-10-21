@@ -13,7 +13,7 @@ def solve_counter(start: int, target: int) -> int:
         return LoopDecision("increment", {"count": current + 1})
 
     result = run_manual_loop(decide, {"count": start}, max_steps=target - start + 1)
-    print("result: ",result)
+    print("result: ", result)
     if not result.completed:
         raise RuntimeError("Loop did not finish within its budget")
     return int(result.state["answer"])

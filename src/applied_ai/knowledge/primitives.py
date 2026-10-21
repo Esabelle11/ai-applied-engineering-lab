@@ -23,7 +23,9 @@ def chunk_text(text: str, *, max_chars: int = 400, overlap: int = 40) -> tuple[s
     """Create bounded, overlapping character chunks without silently dropping text."""
     if not text.strip() or max_chars < 1 or not 0 <= overlap < max_chars:
         raise ValueError("text, max_chars, and overlap are invalid")
-    return tuple(text[start : start + max_chars] for start in range(0, len(text), max_chars - overlap))
+    return tuple(
+        text[start : start + max_chars] for start in range(0, len(text), max_chars - overlap)
+    )
 
 
 def embed_text(text: str, *, dimensions: int = 1024) -> tuple[float, ...]:
@@ -50,7 +52,9 @@ class VectorRetriever:
             raise ValueError("Documents and a valid dimension count are required")
         self.documents = tuple(documents)
         self.dimensions = dimensions
-        self._vectors = {document.id: embed_text(document.text, dimensions=dimensions) for document in documents}
+        self._vectors = {
+            document.id: embed_text(document.text, dimensions=dimensions) for document in documents
+        }
 
     def search(self, query: str, *, limit: int = 3) -> tuple[Document, ...]:
         if not query.strip() or limit < 1:
@@ -58,12 +62,17 @@ class VectorRetriever:
         query_vector = embed_text(query, dimensions=self.dimensions)
         ranked = sorted(
             self.documents,
-            key=lambda document: (-cosine_similarity(query_vector, self._vectors[document.id]), document.id),
+            key=lambda document: (
+                -cosine_similarity(query_vector, self._vectors[document.id]),
+                document.id,
+            ),
         )
         return tuple(ranked[:limit])
 
 
-def hybrid_search(documents: Sequence[Document], query: str, *, limit: int = 3) -> tuple[Document, ...]:
+def hybrid_search(
+    documents: Sequence[Document], query: str, *, limit: int = 3
+) -> tuple[Document, ...]:
     """Fuse lexical and hash-vector rankings using deterministic reciprocal ranks."""
     lexical = LexicalRetriever(documents).search(query, limit=len(documents))
     vector = VectorRetriever(documents).search(query, limit=len(documents))
@@ -72,7 +81,10 @@ def hybrid_search(documents: Sequence[Document], query: str, *, limit: int = 3) 
         for rank, document in enumerate(ranking, 1):
             scores[document.id] = scores.get(document.id, 0.0) + 1 / (60 + rank)
     by_id = {document.id: document for document in documents}
-    return tuple(by_id[document_id] for document_id in sorted(scores, key=lambda item: (-scores[item], item))[:limit])
+    return tuple(
+        by_id[document_id]
+        for document_id in sorted(scores, key=lambda item: (-scores[item], item))[:limit]
+    )
 
 
 def rerank(query: str, candidates: Sequence[Document], *, limit: int = 3) -> tuple[Document, ...]:
@@ -80,7 +92,12 @@ def rerank(query: str, candidates: Sequence[Document], *, limit: int = 3) -> tup
     if not query.strip() or limit < 1:
         raise ValueError("query must be non-empty and limit positive")
     terms = set(re.findall(r"[a-z0-9]+", query.lower()))
-    return tuple(sorted(candidates, key=lambda doc: (-len(terms & set(re.findall(r"[a-z0-9]+", doc.text.lower()))), doc.id))[:limit])
+    return tuple(
+        sorted(
+            candidates,
+            key=lambda doc: (-len(terms & set(re.findall(r"[a-z0-9]+", doc.text.lower()))), doc.id),
+        )[:limit]
+    )
 
 
 def rewrite_query(query: str) -> str:
@@ -150,7 +167,9 @@ class RetrievalMetrics:
     recall_at_k: float
 
 
-def measure_retrieval(retrieved_ids: Sequence[str], relevant_ids: Sequence[str], *, k: int) -> RetrievalMetrics:
+def measure_retrieval(
+    retrieved_ids: Sequence[str], relevant_ids: Sequence[str], *, k: int
+) -> RetrievalMetrics:
     if k < 1 or not relevant_ids:
         raise ValueError("k must be positive and relevant_ids must be non-empty")
     top = set(retrieved_ids[:k])

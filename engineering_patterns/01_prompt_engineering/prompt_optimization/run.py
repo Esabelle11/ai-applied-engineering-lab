@@ -23,7 +23,10 @@ class OptimizationResult:
 
 
 def select_best_prompt(
-    candidates: Sequence[PromptCandidate], scorer: Callable[[str], float], *, length_penalty: float = 0.001
+    candidates: Sequence[PromptCandidate],
+    scorer: Callable[[str], float],
+    *,
+    length_penalty: float = 0.001,
 ) -> OptimizationResult:
     """Maximize an explicit score while applying a small, predictable length penalty."""
     if not candidates or length_penalty < 0:
@@ -41,7 +44,10 @@ def select_best_prompt(
 def main() -> None:
     candidates = (
         PromptCandidate("concise", "Classify the sentiment: {review}"),
-        PromptCandidate("specific", "Classify this review as positive or negative. Return one lowercase label: {review}"),
+        PromptCandidate(
+            "specific",
+            "Classify this review as positive or negative. Return one lowercase label: {review}",
+        ),
     )
     result = select_best_prompt(candidates, lambda prompt: 0.90 if "lowercase" in prompt else 0.82)
     print("result:", result)

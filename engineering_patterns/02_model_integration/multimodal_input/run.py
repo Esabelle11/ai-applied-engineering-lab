@@ -42,7 +42,9 @@ def to_openai_content(parts: tuple[TextPart | ImagePart, ...]) -> list[dict[str,
 
 
 def main() -> None:
-    content = to_openai_content((TextPart("What is shown in this image?"), ImagePart("https://example.test/cat.png", "low")))
+    content = to_openai_content(
+        (TextPart("What is shown in this image?"), ImagePart("https://example.test/cat.png", "low"))
+    )
     print(content)
 
 

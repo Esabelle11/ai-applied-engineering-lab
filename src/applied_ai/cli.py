@@ -10,7 +10,9 @@ from applied_ai.client import AppliedAIClient
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Run a provider-neutral Applied AI request")
     parser.add_argument("prompt", help="User prompt to send")
-    parser.add_argument("--live", action="store_true", help="Explicitly allow a configured live provider")
+    parser.add_argument(
+        "--live", action="store_true", help="Explicitly allow a configured live provider"
+    )
     return parser
 
 

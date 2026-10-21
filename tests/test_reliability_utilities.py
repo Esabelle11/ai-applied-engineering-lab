@@ -36,4 +36,7 @@ def test_validation_recovery_and_degradation_are_explicit() -> None:
     def unavailable() -> str:
         raise ConnectionError("offline")
 
-    assert with_degradation(unavailable, lambda: "fallback", recoverable=(ConnectionError,)) == "fallback"
+    assert (
+        with_degradation(unavailable, lambda: "fallback", recoverable=(ConnectionError,))
+        == "fallback"
+    )

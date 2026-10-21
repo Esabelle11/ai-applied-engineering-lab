@@ -3,8 +3,8 @@
 from __future__ import annotations
 
 import os
-from dataclasses import dataclass
 from collections.abc import Mapping
+from dataclasses import dataclass
 
 from applied_ai.core.exceptions import ConfigurationError
 
@@ -18,7 +18,7 @@ class Settings:
     allow_live: bool = False
 
     @classmethod
-    def from_env(cls, env: Mapping[str, str] | None = None) -> "Settings":
+    def from_env(cls, env: Mapping[str, str] | None = None) -> Settings:
         values = dict(os.environ if env is None else env)
         try:
             timeout = float(values.get("APP_REQUEST_TIMEOUT_SECONDS", "30"))
@@ -26,7 +26,9 @@ class Settings:
         except ValueError as exc:
             raise ConfigurationError("Timeout and retry settings must be numeric") from exc
         provider = values.get("AI_LAB_PROVIDER", "mock").strip().lower() or "mock"
-        model = values.get("AI_LAB_MODEL", "").strip() or ("mock-model" if provider == "mock" else "")
+        model = values.get("AI_LAB_MODEL", "").strip() or (
+            "mock-model" if provider == "mock" else ""
+        )
         if not model:
             raise ConfigurationError("AI_LAB_MODEL is required for live providers")
         if not 0 < timeout <= 600 or retries < 0 or retries > 20:

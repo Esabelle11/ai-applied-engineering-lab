@@ -16,6 +16,7 @@ def billing_specialist(state: State) -> str:
     question = state["question"]
     return f"Billing specialist received the case and will investigate: {question}"
 
+
 def data_specialist(state: State) -> str:
     """Handle the state that triage transferred to the billing team."""
     question = state["question"]
@@ -43,8 +44,11 @@ def escalate_to_specialist(question: str) -> str:
     transfer = handoff("triage", "billing_specialist", {"question": question, "reason": "billing"})
     return dispatch(transfer)
 
+
 def escalate_to_data_specialist(question: str) -> str:
-    transfer = handoff("document", "data_specialist", {"question": question, "reason": "data null issue"})
+    transfer = handoff(
+        "document", "data_specialist", {"question": question, "reason": "data null issue"}
+    )
     return dispatch(transfer)
 
 

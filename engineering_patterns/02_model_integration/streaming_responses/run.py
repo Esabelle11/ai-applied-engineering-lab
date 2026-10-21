@@ -34,7 +34,10 @@ class MockStreamingProvider:
     def stream(self, prompt: str) -> Iterator[StreamChunk]:
         if not prompt.strip():
             raise ValueError("prompt must be non-empty")
-        fragments = [self.response[index : index + self.chunk_size] for index in range(0, len(self.response), self.chunk_size)]
+        fragments = [
+            self.response[index : index + self.chunk_size]
+            for index in range(0, len(self.response), self.chunk_size)
+        ]
         for index, fragment in enumerate(fragments):
             yield StreamChunk(index, fragment, final=index == len(fragments) - 1)
 
@@ -55,7 +58,9 @@ def collect_stream(chunks: Iterator[StreamChunk]) -> str:
 
 
 def main() -> None:
-    print(collect_stream(MockStreamingProvider("streamed response", chunk_size=5).stream("Say hello")))
+    print(
+        collect_stream(MockStreamingProvider("streamed response", chunk_size=5).stream("Say hello"))
+    )
 
 
 if __name__ == "__main__":

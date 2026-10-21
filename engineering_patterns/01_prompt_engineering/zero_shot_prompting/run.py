@@ -22,14 +22,18 @@ def build_zero_shot_messages(
 
 def execute_zero_shot(provider: LLMProvider, model: str, instruction: str, task_input: str) -> str:
     """Execute one explicit generation call; retries and grading are separate concerns."""
-    response = provider.generate(LLMRequest(model, build_zero_shot_messages(instruction, task_input)))
+    response = provider.generate(
+        LLMRequest(model, build_zero_shot_messages(instruction, task_input))
+    )
     return response.text
 
 
 def main() -> None:
     question = "Classify this review as positive or negative: The battery lasts all day."
     provider = MockProvider(responses={question: "positive"})
-    print(execute_zero_shot(provider, "mock", "Classify sentiment using one lowercase word", question))
+    print(
+        execute_zero_shot(provider, "mock", "Classify sentiment using one lowercase word", question)
+    )
 
 
 if __name__ == "__main__":
