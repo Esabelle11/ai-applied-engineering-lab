@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -87,6 +88,14 @@ def test_math_sandbox_does_not_use_host_python(monkeypatch: pytest.MonkeyPatch) 
 
 def test_each_script_runs_with_python_m(monkeypatch: pytest.MonkeyPatch) -> None:
     root = Path(__file__).resolve().parents[1]
+    env = {
+        "PATH": str(Path(sys.executable).parent),
+        "AI_LAB_PROVIDER": "mock",
+        "PYTHONPATH": str(root / "src") + os.pathsep + str(root),
+    }
+    for key in ("SystemRoot", "WINDIR", "TEMP", "TMP"):
+        if key in os.environ:
+            env[key] = os.environ[key]
     for slug in (
         "prompt_forge",
         "whybuddy",
@@ -101,10 +110,6 @@ def test_each_script_runs_with_python_m(monkeypatch: pytest.MonkeyPatch) -> None
             text=True,
             timeout=10,
             check=False,
-            env={
-                "PATH": str(Path(sys.executable).parent),
-                "AI_LAB_PROVIDER": "mock",
-                "PYTHONPATH": str(root / "src") + ":" + str(root),
-            },
+            env=env,
         )
         assert result.returncode == 0, (slug, result.stderr)
