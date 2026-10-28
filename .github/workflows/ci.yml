@@ -55,7 +55,5 @@ jobs:
         run: uv run --offline --locked python scripts/run_all_patterns.py
       - name: All offline case studies
         run: uv run --offline --locked python scripts/run_all_case_studies.py
-      - name: Reproduce synthetic benchmarks
-        run: uv run --offline --locked python scripts/run_benchmarks.py
       - name: Wheel and source distribution
         run: uv build

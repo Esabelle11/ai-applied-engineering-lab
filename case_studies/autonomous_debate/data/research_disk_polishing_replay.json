@@ -1,0 +1,49 @@
+{
+  "signal": {
+    "title": "Disk Polishing Goes Open Source - Hackaday",
+    "description": "Optical media is great — it’s pretty high density, relatively durable, and decently long-lasting if well cared for. If not well cared for, well, it’s only relatively durable, and …",
+    "source": "Hackaday",
+    "publishedAt": "2026-07-04T20:00:00Z"
+  },
+  "facts": {
+    "facts": [
+      "An article titled \"Disk Polishing Goes Open Source\" was published on Hackaday.",
+      "The article was published on 2026-07-04 at 20:00:00 UTC.",
+      "The article describes optical media as having high density.",
+      "The article states that optical media is relatively durable.",
+      "The article notes that optical media can be decently long‑lasting if well cared for."
+    ],
+    "entities": [
+      "Disk Polishing",
+      "Hackaday",
+      "optical media"
+    ],
+    "themes": [
+      "open source",
+      "optical media",
+      "disk polishing",
+      "data storage durability"
+    ]
+  },
+  "mode": "emotional",
+  "intensity": {
+    "heat": 9,
+    "chaos": 8
+  },
+  "debate": {
+    "topic": "Should open‑source disk polishing be adopted as a standard method for preserving optical media?",
+    "background": "An article titled \"Disk Polishing Goes Open Source\" was published on Hackaday on 2026-07-04 at 20:00:00 UTC. The article describes optical media as having high density and being relatively durable. It also notes that optical media can be decently long‑lasting if well cared for. The piece highlights the emergence of open‑source tools for disk polishing.",
+    "framing": "Is it advisable to make open‑source disk polishing a mainstream technique for extending the lifespan of optical storage?",
+    "emotion": 9,
+    "controversy": 9
+  },
+  "evaluation": {
+    "faithfulness": 9,
+    "relevance": 10,
+    "controversy": 9,
+    "framing": 8,
+    "coherence": 9,
+    "overall": 9
+  },
+  "average_eval": 9
+}

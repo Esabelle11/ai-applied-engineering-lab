@@ -23,7 +23,7 @@ def create_provider(kind: str) -> LLMProvider:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Phase 1 provider-neutral demonstration")
+    parser = argparse.ArgumentParser(description="Provider-neutral demonstration")
     parser.add_argument("--provider", choices=["mock", "openai"], default="mock")
     parser.add_argument("--model", default=None, help="Model ID used by the selected provider")
     arguments = parser.parse_args()

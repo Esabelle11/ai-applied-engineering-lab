@@ -1,4 +1,4 @@
-"""Deterministic fault-injection tests for Phase 2 reliability behavior."""
+"""Deterministic fault-injection tests for reliability behavior."""
 
 from __future__ import annotations
 

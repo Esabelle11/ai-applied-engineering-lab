@@ -19,7 +19,7 @@ from pydantic import BaseModel, Field
 
 from applied_ai.core.exceptions import LLMError
 
-from .service import COMPARISONS, EXAMPLES, baseline_reports, compare, discover_patterns, execute
+from .service import COMPARISONS, EXAMPLES, compare, discover_patterns, execute
 
 FRONTEND = Path(__file__).resolve().parents[1] / "frontend"
 
@@ -157,14 +157,6 @@ def create_app(config: PlaygroundConfig | None = None) -> FastAPI:
             "patterns": discover_patterns(),
             "examples": [e.__dict__ for e in EXAMPLES],
             "comparisons": list(COMPARISONS),
-        }
-
-    @app.get("/api/reports")
-    def reports(_auth: None = Depends(require_auth)) -> dict[str, Any]:
-        return {
-            "reports": baseline_reports(),
-            "source": "committed_offline_baseline",
-            "disclaimer": "Synthetic fixtures. Not real provider accuracy, cost, or latency.",
         }
 
     @app.post("/api/run")

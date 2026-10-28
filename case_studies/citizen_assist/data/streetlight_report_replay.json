@@ -1,0 +1,20 @@
+{
+  "message": "A streetlight at 18 River Walk, pole SL-204, has been out for two nights.",
+  "result": {
+    "intent": "REPORT",
+    "category": "STREETLIGHT",
+    "urgency": "LOW",
+    "response": "Thanks for the details. I have prepared this streetlight issue for municipal review. This demo does not send a report or contact an agency.",
+    "requiresImmediateGps": false,
+    "extractedEntities": {
+      "location": "18 River Walk",
+      "poleNumber": "SL-204",
+      "issue": "streetlight not working",
+      "duration": "two nights"
+    },
+    "missingFields": [],
+    "readyForSubmission": true,
+    "followUpQuestion": null,
+    "rationale": "The message reports a non-emergency streetlight fault and includes a precise location and asset identifier."
+  }
+}

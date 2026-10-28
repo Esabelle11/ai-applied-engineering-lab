@@ -1,4 +1,4 @@
-"""Single synchronous provider protocol for the Phase 1 vertical slice."""
+"""Single synchronous provider protocol."""
 
 from __future__ import annotations
 

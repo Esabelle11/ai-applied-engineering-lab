@@ -27,7 +27,18 @@ openrouter = ["httpx>=0.27,<1"]
 anthropic = ["httpx>=0.27,<1"]
 google = ["httpx>=0.27,<1"]
 ollama = ["httpx>=0.27,<1"]
-benchmarks = ["langgraph>=0.3,<2"]
+groq = ["httpx>=0.27,<1"]
+media = [
+  "accelerate>=1,<2",
+  "diffusers>=0.36,<1",
+  "Pillow>=10,<12",
+  "safetensors>=0.5,<1",
+  "torch>=2.6,<3",
+  "transformers>=4.48,<6",
+]
+local-kernel = ["ipykernel>=6,<7", "jupyter-client>=8,<9"]
+jev = ["typesafe-sdk>=0.7,<1"]
+agent-frameworks = ["langchain>=1,<2", "langgraph>=1,<2"]
 playground = [
   "fastapi>=0.115,<1",
   "httpx2>=2.13,<3",

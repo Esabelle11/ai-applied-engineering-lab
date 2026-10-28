@@ -1,4 +1,4 @@
-"""Synchronous resilience wrapper over any Phase 1 LLMProvider.
+"""Synchronous resilience wrapper over any ``LLMProvider``.
 
 This wrapper *only* calls provider.generate(). It does not rerun user tools.
 A deadline is propagated to providers through LLMRequest.timeout_seconds;

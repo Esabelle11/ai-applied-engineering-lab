@@ -1,4 +1,4 @@
-"""Public SDK exports for Applied AI Engineering Lab Phase 7."""
+"""Public SDK exports for Applied AI Engineering Lab."""
 
 from applied_ai.client import AppliedAIClient
 from applied_ai.config import RuntimeConfig

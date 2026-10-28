@@ -60,18 +60,21 @@ class OpenRouterProvider:
             )
         payload: dict[str, Any] = {
             "model": request.model,
+            "usage": {"include": True},
             "messages": [{"role": m.role, "content": m.content} for m in request.messages],
         }
         if request.max_output_tokens is not None:
             payload["max_tokens"] = request.max_output_tokens
         if request.temperature is not None:
             payload["temperature"] = request.temperature
+
         body, elapsed, rid = self._transport.post(
             "https://openrouter.ai/api/v1/chat/completions",
             {"Authorization": f"Bearer {self._key}", "Content-Type": "application/json"},
             payload,
             request.timeout_seconds,
         )
+
         try:
             choice = body["choices"][0]
             result = choice["message"]["content"]

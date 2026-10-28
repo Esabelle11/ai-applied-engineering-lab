@@ -8,7 +8,7 @@ labels: [pattern]
 What problem is solved, and why does this belong in the handbook?
 
 ## Category and SDK ownership
-Category 01–08, proposed `engineering_patterns/...` location, canonical `src/applied_ai/...` implementation.
+Category 01–09, proposed `engineering_patterns/...` location, canonical `src/applied_ai/...` implementation.
 
 ## Implementation alternatives and tradeoffs
 Manual vs framework/SDK, dependencies, limitations, failure modes, costs.

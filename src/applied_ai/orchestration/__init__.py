@@ -28,6 +28,12 @@ from applied_ai.orchestration.primitives import (
     run_sequential,
     run_with_recovery,
 )
+from applied_ai.orchestration.review import (
+    ConsensusFinding,
+    ReviewFinding,
+    SpecialistReview,
+    synthesize_reviews,
+)
 
 __all__ = [
     "Agent",
@@ -35,6 +41,7 @@ __all__ = [
     "ApprovalGate",
     "ApprovalRequest",
     "CheckpointStore",
+    "ConsensusFinding",
     "GraphNode",
     "GraphSnapshot",
     "Handoff",
@@ -42,6 +49,8 @@ __all__ = [
     "LoopResult",
     "Plan",
     "RecoveryResult",
+    "ReviewFinding",
+    "SpecialistReview",
     "StateGraph",
     "ToolRegistry",
     "choose_route",
@@ -53,6 +62,7 @@ __all__ = [
     "run_parallel",
     "run_sequential",
     "run_with_recovery",
+    "synthesize_reviews",
 ]
 
 

@@ -14,4 +14,4 @@ Explain engineering need, pattern/API touched, and expected observable behavior.
 - [ ] Performance claims have fixed controls, raw inputs, run metadata, and limitations.
 
 ## Risks and rollback
-Security, billing, sandbox, compatibility, and migration notes. Link to benchmark/report if applicable.
+Security, billing, sandbox, compatibility, and migration notes.

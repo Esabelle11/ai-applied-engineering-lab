@@ -1,4 +1,4 @@
-.PHONY: setup lint format format-check typecheck test test-offline patterns cases benchmarks docs docs-check secrets release-check check build
+.PHONY: setup lint format format-check typecheck test test-offline patterns cases docs docs-check secrets release-check check build
 
 setup:
 	uv sync --locked --group dev --extra providers --extra playground
@@ -26,9 +26,6 @@ patterns:
 
 cases:
 	uv run --offline --locked python scripts/run_all_case_studies.py
-
-benchmarks:
-	uv run --offline --locked python scripts/run_benchmarks.py
 
 docs:
 	uv run --locked python scripts/generate_catalog.py

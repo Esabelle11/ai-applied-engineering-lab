@@ -9,6 +9,20 @@ from dataclasses import dataclass
 from applied_ai.core.messages import Message
 from applied_ai.core.protocols import LLMProvider
 from applied_ai.core.requests import LLMRequest
+from applied_ai.prompting.requirements import (
+    RequirementGap,
+    merge_requirement_answers,
+    select_clarifying_questions,
+)
+
+__all__ = [
+    "PromptChain",
+    "PromptStep",
+    "PromptTemplate",
+    "RequirementGap",
+    "merge_requirement_answers",
+    "select_clarifying_questions",
+]
 
 _FIELD = re.compile(r"\{([a-z][a-z0-9_]*)\}")
 _BAD_FIELD = re.compile(r"\{[^{}]*\}")

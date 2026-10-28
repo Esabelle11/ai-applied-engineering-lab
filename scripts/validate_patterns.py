@@ -24,22 +24,17 @@ REQUIRED = {
 def validate() -> list[str]:
     errors: list[str] = []
     identifiers: set[str] = set()
-    categories = sorted(p for p in HANDBOOK.glob("0[1-8]_*") if p.is_dir())
-    if len(categories) != 8:
-        errors.append(f"Expected 8 pattern categories; found {len(categories)}")
+    categories = sorted(p for p in HANDBOOK.glob("[0-9][0-9]_*") if p.is_dir())
+    if len(categories) != 9:
+        errors.append(f"Expected 9 pattern categories; found {len(categories)}")
 
     patterns = 0
     for category in categories:
         if not (category / "README.md").is_file():
             errors.append(f"Missing README: {category}")
-        for pattern in category.iterdir():
-            if not pattern.is_dir():
-                continue
+        for metadata_path in sorted(category.rglob("pattern.yaml")):
+            pattern = metadata_path.parent
             patterns += 1
-            metadata_path = pattern / "pattern.yaml"
-            if not metadata_path.is_file():
-                errors.append(f"Missing pattern metadata: {metadata_path}")
-                continue
             try:
                 loaded = yaml.safe_load(metadata_path.read_text(encoding="utf-8"))
             except yaml.YAMLError as exc:
@@ -87,7 +82,7 @@ def main() -> None:
         for error in errors:
             print(f"ERROR: {error}")
         raise SystemExit(1)
-    print("Handbook structure valid: 8 categories and runnable example(s).")
+    print("Handbook structure valid: 9 categories and runnable example(s).")
 
 
 if __name__ == "__main__":

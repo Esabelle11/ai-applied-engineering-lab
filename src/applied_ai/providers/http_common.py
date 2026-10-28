@@ -1,6 +1,6 @@
 """Shared minimal HTTP JSON transport and normalized failure mapping.
 
-Single attempt only: Phase 2's ReliableProvider supplies retries and deadlines.
+Single attempt only: ``ReliableProvider`` supplies retries and deadlines.
 """
 
 from __future__ import annotations

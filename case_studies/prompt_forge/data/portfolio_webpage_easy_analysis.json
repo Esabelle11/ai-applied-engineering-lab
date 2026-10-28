@@ -1,0 +1,66 @@
+{
+  "score": 35,
+  "issues": [
+    {
+      "title": "Vague Purpose and Audience",
+      "severity": "high",
+      "description": "The prompt states the portfolio is for 'software engineering purpose' but does not clarify what this entails — whether it's for job applications, freelance work, open source collaboration, or internal visibility. The target audience (recruiters, hiring managers, peers) is unspecified."
+    },
+    {
+      "title": "Missing Features and Content",
+      "severity": "high",
+      "description": "No specification of what content should be included (e.g., bio, skills, projects, resume, blog, contact form). Without defined sections, the AI cannot determine structure or priority."
+    },
+    {
+      "title": "No Technical Requirements",
+      "severity": "medium",
+      "description": "The prompt does not specify frontend framework (React, Vue, plain HTML/CSS), hosting preference (static site, Vercel, Netlify), or interactivity level (animated, minimal, accessible)."
+    },
+    {
+      "title": "Absent UI/UX Expectations",
+      "severity": "medium",
+      "description": "No mention of design preferences (modern, minimalist, dark mode), responsiveness requirements, or accessibility standards (WCAG)."
+    },
+    {
+      "title": "No Data or Integration Details",
+      "severity": "low",
+      "description": "Unclear if the portfolio should pull data from external sources (GitHub API, LinkedIn), host static content, or include a backend for contact forms."
+    }
+  ],
+  "suggestions": [
+    "Clarify the primary goal of the portfolio (e.g., job search, freelance branding).",
+    "List required sections: bio, skills, projects, resume download, contact form.",
+    "Specify technical stack preferences (e.g., React + Tailwind CSS, or plain HTML/CSS/JS).",
+    "Define responsiveness and accessibility expectations (mobile-friendly, WCAG 2.1 AA).",
+    "Mention if animations, dark mode, or blog integration are desired.",
+    "Note hosting preferences (e.g., deploy to Vercel, GitHub Pages)."
+  ],
+  "improvedPrompt": "Build a personal portfolio webpage for a software engineer seeking full-time employment. The site should showcase professional background, technical skills, project experience, and provide a way for recruiters to contact me. Include the following sections: Hero (name, title, short bio), Skills (categorized: languages, frameworks, tools), Projects (3–5 highlighted projects with title, description, tech stack, GitHub/live links, and screenshots), Resume (PDF download link), and Contact (form with name, email, message, and optional LinkedIn/GitHub links). Use React with Tailwind CSS for styling, ensuring the site is fully responsive and meets WCAG 2.1 AA accessibility standards. Implement a light/dark mode toggle. Host the site on Vercel. No backend is needed — the contact form should use Formspree or EmailJS for submission. Prioritize clean, modern UI with subtle animations on scroll and hover.",
+  "explanation": [
+    {
+      "change": "Defined clear purpose: job search for software engineering role",
+      "reason": "Establishes intent and helps prioritize content and tone"
+    },
+    {
+      "reason": "Ensures the AI knows what content to include and structure around",
+      "change": "Specified exact sections: Hero, Skills, Projects, Resume, Contact"
+    },
+    {
+      "change": "Chose React + Tailwind CSS as the tech stack",
+      "reason": "Provides clear implementation direction while allowing flexibility"
+    },
+    {
+      "change": "Added responsiveness, accessibility (WCAG 2.1 AA), and dark mode",
+      "reason": "Addresses key UX and inclusivity expectations for a professional portfolio"
+    },
+    {
+      "change": "Specified hosting (Vercel) and form handling (Formspree/EmailJS)",
+      "reason": "Eliminates ambiguity about deployment and backend needs"
+    },
+    {
+      "change": "Prioritized modern UI with subtle animations",
+      "reason": "Sets expectations for polish without over-engineering"
+    }
+  ]
+}
+

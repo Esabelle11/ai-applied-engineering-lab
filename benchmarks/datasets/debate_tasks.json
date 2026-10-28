@@ -1,6 +1,0 @@
-[
-  {"id":"debate_01","topic":"  Open   data  ","expected":"benefit(open data) / risk(open data)"},
-  {"id":"debate_02","topic":"AI for Education","expected":"benefit(ai for education) / risk(ai for education)"},
-  {"id":"debate_03","topic":"  public transport","expected":"benefit(public transport) / risk(public transport)"},
-  {"id":"debate_04","topic":"Renewable Energy  ","expected":"benefit(renewable energy) / risk(renewable energy)"}
-]

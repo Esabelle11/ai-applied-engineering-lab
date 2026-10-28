@@ -2,8 +2,8 @@
 (() => {
   "use strict";
   const $ = (id) => document.getElementById(id);
-  const state = { token: "", catalog: null, reports: [], config: null };
-  const titles = { overview: "Overview", patterns: "Pattern library", playground: "Playground", compare: "Compare", evidence: "Evidence" };
+  const state = { token: "", catalog: null, config: null };
+  const titles = { overview: "Overview", patterns: "Pattern library", playground: "Playground", compare: "Compare" };
   const format = (value) => value == null ? "N/A" : String(value);
   const tidy = (id) => id.replaceAll("_", " ").replace(/\b\w/g, (s) => s.toUpperCase());
 
@@ -142,29 +142,6 @@
     finally { btn.disabled = false; }
   });
 
-  function renderEvidence() {
-    const list = $("evidence-list"); clear(list);
-    state.reports.forEach((report) => {
-      const card = element("article", "evidence-card");
-      const head = element("div", "evidence-header");
-      const left = element("div"); left.append(element("div", "tiny-label", "PHASE 5 / OFFLINE BASELINE"));
-      left.append(element("h2", "", tidy(report.id)));
-      head.append(left, element("span", "tag", `${report.records} OBSERVATIONS`)); card.append(head);
-      const table = element("table", "evidence-table");
-      const header = element("tr"); ["IMPLEMENTATION", "COMPLETION", "CORRECT", "P50", "P95"].forEach((s) => header.append(element("th", "", s)));
-      const thead = element("thead"); thead.append(header); table.append(thead);
-      const tbody = element("tbody");
-      Object.entries(report.summary).forEach(([name, stats]) => {
-        const tr = element("tr");
-        [name, stats.completion_rate, stats.correct_rate, stats.latency_p50_seconds, stats.latency_p95_seconds].forEach((v) => tr.append(element("td", "", format(v))));
-        tbody.append(tr);
-      });
-      table.append(tbody); card.append(table);
-      card.append(element("div", "hash", `Dataset SHA256: ${report.dataset_sha256}\nManifest SHA256: ${report.manifest_sha256}`));
-      list.append(card);
-    });
-    if (!list.children.length) list.append(element("div", "empty-card", "No committed baseline report found"));
-  }
   function populateCatalog() {
     const catalog = state.catalog;
     $("pattern-count").textContent = String(catalog.patterns.length).padStart(2, "0");
@@ -189,12 +166,12 @@
   }
   async function initialize() {
     try {
-      const [config, catalog, reports] = await Promise.all([call("/api/settings"), call("/api/catalog"), call("/api/reports")]);
-      state.config = config; state.catalog = catalog; state.reports = reports.reports;
+      const [config, catalog] = await Promise.all([call("/api/settings"), call("/api/catalog")]);
+      state.config = config; state.catalog = catalog;
       $("mode-badge").textContent = config.live_enabled ? "LIVE ENABLED / OPT-IN" : "OFFLINE FIRST";
       $("connection").textContent = "Backend connected";
       $("quota-left").textContent = config.quotas.remaining;
-      populateCatalog(); renderEvidence();
+      populateCatalog();
     } catch (err) { $("connection").textContent = "Connection unavailable"; showToast(err.message); }
   }
   void initialize();

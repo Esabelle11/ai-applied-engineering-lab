@@ -10,10 +10,6 @@ Clone, install Python 3.12/3.13 and uv, then `uv lock` (only when dependencies c
 
 Start from `engineering_patterns/_template/`. Choose an existing numbered category (numbers are organizational), create a standalone README (problem, mechanism, assumptions, alternatives, limits, failure modes), `pattern.yaml`, safe `run.py`, and deterministic tests including a representative failure. Use SDK imports rather than copying core logic into the example; do not require a live key for normal CI. Add a public API migration note if changing documented exports. Run `python scripts/generate_catalog.py` and verify `--check` passes.
 
-## New benchmarks
-
-Submit a question/hypothesis, manifest/config and dataset hashes, matched inputs/controls, seed when applicable, raw observations, aggregations, failure and negative outcomes, sample sizes and limitations. Synthetic fixtures must never be presented as measured live-model performance. Use issue template `benchmark_submission.md`.
-
 ## Quality gate
 
 ```bash

@@ -1,13 +1,13 @@
-"""Check that Phase 0 handbook scaffold and example exist."""
+"""Check that handbook scaffolding and examples exist."""
 
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def test_eight_documented_categories_exist() -> None:
-    categories = sorted((ROOT / "engineering_patterns").glob("0[1-8]_*"))
-    assert len(categories) == 8
+def test_nine_documented_categories_exist() -> None:
+    categories = sorted((ROOT / "engineering_patterns").glob("[0-9][0-9]_*"))
+    assert len(categories) == 9
     assert all((category / "README.md").is_file() for category in categories)
 
 

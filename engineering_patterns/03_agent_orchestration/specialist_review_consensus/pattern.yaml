@@ -1,0 +1,8 @@
+id: agent_orchestration.specialist_review_consensus
+name: Specialist Review Consensus
+category: 03_agent_orchestration
+status: implemented
+requires_api_key: false
+supports_offline_testing: true
+entrypoint: run.py
+started_on: 22/10/2026

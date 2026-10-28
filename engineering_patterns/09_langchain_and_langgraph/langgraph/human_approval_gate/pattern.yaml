@@ -1,0 +1,12 @@
+id: langgraph.human_approval_gate
+name: Human approval gate graph
+category: 09_langchain_and_langgraph
+status: experimental
+level: intermediate
+requires_api_key: false
+supports_offline_testing: true
+entrypoint: run.py
+started_on: "28/10/2026"
+validation:
+  offline_test: tests/test_framework_patterns.py
+

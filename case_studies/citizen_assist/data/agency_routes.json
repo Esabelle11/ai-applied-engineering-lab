@@ -1,0 +1,22 @@
+{
+  "routes": [
+    {
+      "category": "STREETLIGHT",
+      "agencyName": "Demo Public Works — Street Lighting",
+      "channel": "INTERNAL_REVIEW_QUEUE",
+      "destination": "public-works/street-lighting"
+    },
+    {
+      "category": "WASTE_COLLECTION",
+      "agencyName": "Demo Environmental Services — Waste Collection",
+      "channel": "INTERNAL_REVIEW_QUEUE",
+      "destination": "environmental-services/waste"
+    },
+    {
+      "category": "ROAD_HAZARD",
+      "agencyName": "Demo Public Works — Road Safety",
+      "channel": "INTERNAL_REVIEW_QUEUE",
+      "destination": "public-works/road-safety"
+    }
+  ]
+}

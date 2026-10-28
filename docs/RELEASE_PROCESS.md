@@ -1,12 +1,12 @@
 # First Release Runbook — v0.8.0 Candidate
 
-**Status: PRE-TAG CANDIDATE.** This ZIP intentionally contains no fabricated lockfile and no Git tag. The first release is allowed only after documented exit criteria are met. See [PHASE_7_ACCEPTANCE.md](PHASE_7_ACCEPTANCE.md) and [SECURITY_REVIEW.md](SECURITY_REVIEW.md).
+**Status: PRE-TAG CANDIDATE.** This ZIP intentionally contains no fabricated lockfile and no Git tag. The first release is allowed only after documented exit criteria are met. See [SECURITY_REVIEW.md](SECURITY_REVIEW.md).
 
 ## 1. Prepare (a network-enabled development machine)
 
 ```bash
 uv lock
-uv sync --locked --group dev --extra providers --extra playground --extra benchmarks
+uv sync --locked --group dev --extra providers --extra playground
 uv run --locked python scripts/generate_catalog.py --check
 uv run --locked python scripts/generate_api_reference.py --check
 uv run --locked python scripts/validate_patterns.py
@@ -24,7 +24,6 @@ uv run --locked mypy src
 uv run --offline --locked pytest -q
 uv run --offline --locked python scripts/run_all_patterns.py
 uv run --offline --locked python scripts/run_all_case_studies.py
-uv run --offline --locked python scripts/run_benchmarks.py
 uv run --locked python scripts/check_no_secrets.py
 uv run --locked python scripts/security_static_check.py
 uv build
@@ -34,7 +33,7 @@ Run the GitHub Actions test matrix on Linux/macOS/Windows with Python 3.12/3.13.
 
 ## 3. Security and external-provider review
 
-Review [SECURITY_REVIEW.md](SECURITY_REVIEW.md); record outstanding risks with owners. Do not publish credentials or raw model prompts in reports. Only if you intend to claim live-provider validation, separately run an opt-in smoke test with a small budget and document which model/version/date was used. For sandbox claims, use a trusted Docker workstation and assess output/resource limits before accepting unknown user code.
+Review [SECURITY_REVIEW.md](SECURITY_REVIEW.md); record outstanding risks with owners. Do not publish credentials or raw model prompts. Only if you intend to claim live-provider validation, separately run an opt-in smoke test with a small budget and document which model/version/date was used. For sandbox claims, use a trusted Docker workstation and assess output/resource limits before accepting unknown user code.
 
 ## 4. Confirm public API, artifacts and release notes
 
@@ -42,7 +41,6 @@ Review [SECURITY_REVIEW.md](SECURITY_REVIEW.md); record outstanding risks with o
 - Check that `src/applied_ai/__init__.py`, `pyproject.toml`, and `CHANGELOG.md` all say `0.8.0`.
 - Include source archive, source distribution and wheel (built via `uv build`) only after tests pass.
 - Check the wheel can be installed into a clean Python 3.12/3.13 environment and run `import applied_ai`.
-- Verify any generated benchmark evidence is accurately labeled synthetic with limitations.
 
 ## 5. Tag and publish *only after green gates*
 
@@ -66,6 +64,6 @@ The tag build workflow checks version/tag consistency, runs tests and builds art
 | CI workflow results | URLs for matrix/security/tag jobs |
 | Dependency and secret scans | Dates, tool versions, findings/resolutions |
 | Build outputs | Wheel and sdist hashes |
-| Sample run and benchmark baselines | Commit/config hashes and limitations |
+| Sample run | Commit/config hashes and limitations |
 
 The current candidate intentionally leaves these values unfilled until verified. No action in the supplied package pushes to GitHub or changes your repository remotely.

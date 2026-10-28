@@ -4,7 +4,7 @@
 Illustrate a reusable prompt engineering engineering capability without paid API calls. The example uses deterministic offline data and the shared `applied_ai` SDK.
 
 ## Mechanism and implementation
-Reuse Phase 1 JSON Schema contracts and local validator. The mock example provides deterministic schema-valid data.
+Reuse shared JSON Schema contracts and the local validator. The mock example provides deterministic schema-valid data.
 
 ## Run offline
 
@@ -19,8 +19,8 @@ Schema validity is not factual correctness. API-side strict schema support diffe
 Invalid configuration or unsupported capabilities raise exceptions. No hidden network calls, retries or quality guarantees are introduced in these demonstrations. Refer to the runnable tests for the negative paths.
 
 ## Validation and comparison
-- Contract, success and failure tests: `tests/test_phase3_patterns.py`.
-- No measured performance comparison is claimed. Phase 5 will introduce controlled benchmark reports.
+- Contract, success and failure tests: `tests/test_patterns.py`.
+- No measured performance comparison is claimed.
 - CLI example should run without credentials after project installation.
 
 ## Reuse

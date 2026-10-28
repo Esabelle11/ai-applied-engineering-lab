@@ -63,7 +63,7 @@ EXAMPLES = (
         "retry",
         "Recover from a transient failure",
         "05 Reliability Engineering",
-        "A simulated rate limit is retried using the Phase 2 SDK wrapper.",
+        "A simulated rate limit is retried using the SDK reliability wrapper.",
         "prompt",
         "Short request",
         "Explain exponential backoff.",
@@ -476,27 +476,3 @@ def compare(comparison_id: str, value: str) -> dict[str, Any]:
             "scope": "Prompt construction only; neither branch calls a model",
         }
     raise ValueError("Unknown comparison")
-
-
-def baseline_reports() -> list[dict[str, Any]]:
-    base = ROOT / "benchmarks/reports/baseline_offline"
-    reports = []
-    for identifier in ("retry_strategies", "orchestration_comparison", "math_strategies"):
-        directory = base / identifier
-        if not (directory / "summary.json").is_file():
-            continue
-        import json
-
-        meta = json.loads((directory / "metadata.json").read_text(encoding="utf-8"))
-        summary = json.loads((directory / "summary.json").read_text(encoding="utf-8"))
-        reports.append(
-            {
-                "id": identifier,
-                "status": meta.get("comparison_status"),
-                "records": sum(int(s["records"]) for s in summary.values()),
-                "summary": summary,
-                "manifest_sha256": meta.get("manifest_sha256"),
-                "dataset_sha256": meta.get("dataset_sha256"),
-            }
-        )
-    return reports

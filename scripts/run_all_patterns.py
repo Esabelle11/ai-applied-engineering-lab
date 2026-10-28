@@ -14,7 +14,7 @@ HANDBOOK = ROOT / "engineering_patterns"
 
 
 def main() -> None:
-    patterns = sorted(HANDBOOK.glob("0[1-8]_*/**/pattern.yaml"))
+    patterns = sorted(HANDBOOK.glob("[0-9][0-9]_*/**/pattern.yaml"))
     if not patterns:
         raise SystemExit("No published patterns")
     allow = {

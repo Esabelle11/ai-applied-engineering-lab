@@ -1,6 +1,6 @@
-# Architecture — Phase 0
+# Architecture
 
-The eight `engineering_patterns/` categories are **independent** learning and
+The nine `engineering_patterns/` categories are **independent** learning and
 implementation areas. They are not an execution sequence and do not import
 one another. The `src/applied_ai/` package will hold shared reusable interfaces
 and utilities. A concrete pattern can import this package; case studies will
@@ -23,20 +23,20 @@ engineering_patterns/  ->  src/applied_ai/  (when shared code is needed)
 - `scripts`: development automation and metadata checks.
 - `docs`: architecture and accepted technical decisions.
 
-## Future phases
+## Components
 
-1. Provider protocols and basic model integration.
-2. Retry, backoff, timeouts, fallbacks, and rate limiting.
-3. Pattern implementation across eight categories.
-4. Case studies from Autonomous Debate, Prompt Forge, WhyBuddy,
-   CitizenAssist, and math reasoning with secure execution.
-5. Comparative experiments and measurement infrastructure.
+- Provider protocols and model integration.
+- Explicit retry, backoff, timeouts, fallbacks, and rate limiting.
+- Runnable patterns across nine categories.
+- Case studies from Autonomous Debate, Prompt Forge, WhyBuddy,
+  CitizenAssist, and Loop Tool Agent.
+- Deterministic tests and validation tooling.
 
 Do not introduce LLM model calls, provider secrets, or untrusted code execution
 into the foundation smoke tests.
 
 
-## Phase 1 provider-neutral interface
+## Provider-neutral interface
 
 `LLMRequest` holds a model and immutable text messages. An `LLMProvider`
 implements `generate(request) -> LLMResponse`. The mock and OpenAI adapter
@@ -44,7 +44,7 @@ normalize usage and categorized errors; neither retries implicitly. Structured
 output requires `StructuredOutputSpec` and explicit provider capability support.
 The SDK does not depend on the executable handbook.
 
-## Phase 2 — Opt-in reliability decorator
+## Opt-in reliability decorator
 
 `ReliableProvider` in `src/applied_ai/reliability/` implements the existing
 `LLMProvider` protocol. The provider itself remains single-attempt; the wrapper
@@ -54,4 +54,4 @@ and attaches `ReliabilityStats` without logging prompt content.
 
 Provider adapters must honor `LLMRequest.timeout_seconds` to actually interrupt
 blocking I/O. The wrapper alone cannot preempt arbitrary synchronous code.
-See `docs/PHASE_2_ACCEPTANCE.md` for design and risk boundaries.
+See [architectural decisions](ARCHITECTURAL_DECISIONS.md) for design and risk boundaries.

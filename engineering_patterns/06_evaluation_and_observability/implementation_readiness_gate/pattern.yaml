@@ -1,0 +1,8 @@
+id: evaluation_and_observability.implementation_readiness_gate
+name: Implementation Readiness Gate
+category: 06_evaluation_and_observability
+status: implemented
+requires_api_key: false
+supports_offline_testing: true
+entrypoint: run.py
+started_on: 22/10/2026

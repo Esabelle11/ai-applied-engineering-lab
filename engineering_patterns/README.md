@@ -16,10 +16,11 @@ application may combine any subset of patterns.
 | 06_evaluation_and_observability | [Evaluation & Observability](06_evaluation_and_observability/README.md) |
 | 07_optimization | [Optimization](07_optimization/README.md) |
 | 08_reasoning_and_execution | [Reasoning & Execution](08_reasoning_and_execution/README.md) |
+| 09_langchain_and_langgraph | [LangChain & LangGraph](09_langchain_and_langgraph/README.md) |
 
 ## Pattern contract
 
-1. Each concrete pattern lives in a directory under exactly one category.
+1. Each concrete pattern lives in a directory below exactly one category. A category may use grouping folders when they make a framework distinction clear.
 2. Include `README.md`, `pattern.yaml`, and a runnable `run.py`.
 3. Implement or import reusable utilities from `src/applied_ai` when appropriate.
 4. Provide deterministic no-key/no-network examples whenever possible.

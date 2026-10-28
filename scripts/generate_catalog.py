@@ -18,12 +18,13 @@ OWNERS = {
     "06_evaluation_and_observability": "applied_ai.evaluation",
     "07_optimization": "applied_ai.optimization",
     "08_reasoning_and_execution": "applied_ai.reasoning, applied_ai.execution",
+    "09_langchain_and_langgraph": "optional langchain / langgraph integrations",
 }
 
 
 def generate(root: Path = ROOT) -> str:
     rows = []
-    for meta in sorted((root / "engineering_patterns").glob("0[1-8]_*/**/pattern.yaml")):
+    for meta in sorted((root / "engineering_patterns").glob("[0-9][0-9]_*/**/pattern.yaml")):
         data: Any = yaml.safe_load(meta.read_text(encoding="utf-8"))
         if not isinstance(data, dict) or not all(
             isinstance(data.get(k), str) for k in ("id", "name", "entrypoint", "started_on")

@@ -1,4 +1,4 @@
-"""Run five case studies with a scrubbed, explicitly mock-only environment."""
+"""Run bundled case-study replays without provider credentials."""
 
 from __future__ import annotations
 
@@ -8,7 +8,12 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-CASES = ("prompt_forge", "whybuddy", "autonomous_debate", "citizen_assist", "math_reasoning")
+CASES = (
+    ("prompt_forge", "--replay"),
+    ("whybuddy", "--replay"),
+    ("autonomous_debate", "--replay"),
+    ("citizen_assist", "--replay"),
+)
 
 
 def main() -> None:
@@ -20,16 +25,16 @@ def main() -> None:
     safe["AI_LAB_PROVIDER"] = "mock"
     safe["AI_LAB_MODEL"] = "mock-model"
     safe["PYTHONPATH"] = str(ROOT / "src") + os.pathsep + str(ROOT)
-    for name in CASES:
+    for name, mode in CASES:
         print(f"CASE {name}", flush=True)
         subprocess.run(
-            [sys.executable, "-m", f"case_studies.{name}.run"],
+            [sys.executable, "-m", f"case_studies.{name}.run", mode],
             check=True,
             cwd=ROOT,
             timeout=20,
             env=safe,
         )
-    print(f"PASS: {len(CASES)} offline case studies")
+    print(f"PASS: {len(CASES)} offline case-study replays")
 
 
 if __name__ == "__main__":

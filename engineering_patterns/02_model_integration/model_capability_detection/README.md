@@ -19,8 +19,8 @@ A provider-level capability flag does not guarantee every model or schema is sup
 Invalid configuration or unsupported capabilities raise exceptions. No hidden network calls, retries or quality guarantees are introduced in these demonstrations. Refer to the runnable tests for the negative paths.
 
 ## Validation and comparison
-- Contract, success and failure tests: `tests/test_phase3_patterns.py`.
-- No measured performance comparison is claimed. Phase 5 will introduce controlled benchmark reports.
+- Contract, success and failure tests: `tests/test_patterns.py`.
+- No measured performance comparison is claimed.
 - CLI example should run without credentials after project installation.
 
 ## Reuse

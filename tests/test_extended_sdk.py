@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import importlib.util
+import sys
 from pathlib import Path
 
 from applied_ai import AppliedAIClient, Message, MockProvider, Settings
@@ -42,19 +44,20 @@ def test_memory_registry_and_observability() -> None:
 
 def test_all_roadmap_pattern_manifests_have_runnable_entrypoints() -> None:
     root = Path(__file__).parents[1] / "engineering_patterns"
-    patterns = [
-        path for category in root.glob("0[1-8]_*") for path in category.iterdir() if path.is_dir()
-    ]
-    assert len(patterns) >= 98
+    patterns = sorted(path.parent for path in root.glob("[0-9][0-9]_*/**/pattern.yaml"))
+    assert len(patterns) >= 105
     for pattern in patterns:
         assert (pattern / "README.md").is_file()
         assert (pattern / "pattern.yaml").is_file()
         entrypoint = pattern / "run.py"
         assert entrypoint.is_file()
-        namespace: dict[str, object] = {}
-        exec(compile(entrypoint.read_text(encoding="utf-8"), str(entrypoint), "exec"), namespace)
-        if "run" in namespace:
-            result = namespace["run"]()  # type: ignore[operator]
+        spec = importlib.util.spec_from_file_location(f"pattern_{len(patterns)}", entrypoint)
+        assert spec and spec.loader
+        module = importlib.util.module_from_spec(spec)
+        sys.modules[spec.name] = module
+        spec.loader.exec_module(module)
+        if callable(getattr(module, "run", None)):
+            result = module.run()  # type: ignore[no-untyped-call]
             assert result["offline"] is True  # type: ignore[index]
         else:
-            assert callable(namespace.get("main") or namespace.get("demo"))
+            assert callable(getattr(module, "main", None) or getattr(module, "demo", None))

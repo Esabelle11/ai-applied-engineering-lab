@@ -1,0 +1,8 @@
+id: reasoning_and_execution.parallel_tool_augmented_solver
+name: Parallel Tool-Augmented Solver
+category: 08_reasoning_and_execution
+status: demo
+requires_api_key: false
+supports_offline_testing: true
+entrypoint: run.py
+started_on: "21/10/2026"

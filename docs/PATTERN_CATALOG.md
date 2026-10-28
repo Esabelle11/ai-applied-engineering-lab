@@ -17,6 +17,7 @@ SDK owner(s): `applied_ai.prompting, applied_ai.core.structured`
 | [Prompt Optimization](../engineering_patterns/01_prompt_engineering/prompt_optimization/README.md) | `prompt_engineering.prompt_optimization` | 15/10/2026 | Yes |
 | [Prompt Templates](../engineering_patterns/01_prompt_engineering/prompt_templates/README.md) | `prompt_engineering.prompt_templates` | 11/10/2026 | Yes |
 | [Prompt Versioning](../engineering_patterns/01_prompt_engineering/prompt_versioning/README.md) | `prompt_engineering.prompt_versioning` | 15/10/2026 | Yes |
+| [Requirements Clarification](../engineering_patterns/01_prompt_engineering/requirements_clarification/README.md) | `prompt_engineering.requirements_clarification` | 22/10/2026 | Yes |
 | [Schema-constrained generation](../engineering_patterns/01_prompt_engineering/structured_outputs/README.md) | `prompt_engineering.structured_outputs` | 11/10/2026 | Yes |
 | [Zero Shot Prompting](../engineering_patterns/01_prompt_engineering/zero_shot_prompting/README.md) | `prompt_engineering.zero_shot_prompting` | 15/10/2026 | Yes |
 
@@ -29,6 +30,7 @@ SDK owner(s): `applied_ai.providers, applied_ai.routing, applied_ai.inference`
 | [Concurrent synchronous calls](../engineering_patterns/02_model_integration/async_inference/README.md) | `model_integration.async_inference` | 11/10/2026 | Yes |
 | [Basic API Integration](../engineering_patterns/02_model_integration/basic_api_integration/README.md) | `model_integration.basic_api_integration` | 11/10/2026 | Yes |
 | [Function Calling](../engineering_patterns/02_model_integration/function_calling/README.md) | `model_integration.function_calling` | 15/10/2026 | Yes |
+| [Jev typed decisions](../engineering_patterns/02_model_integration/jev_typed_decisions/README.md) | `model_integration.jev_typed_decisions` | 28/10/2026 | Yes |
 | [Local Model Inference](../engineering_patterns/02_model_integration/local_model_inference/README.md) | `model_integration.local_model_inference` | 15/10/2026 | Yes |
 | [Explicit capability detection](../engineering_patterns/02_model_integration/model_capability_detection/README.md) | `model_integration.model_capability_detection` | 11/10/2026 | Yes |
 | [Model Response Normalization](../engineering_patterns/02_model_integration/model_response_normalization/README.md) | `model_integration.model_response_normalization` | 15/10/2026 | Yes |
@@ -56,6 +58,7 @@ SDK owner(s): `applied_ai.orchestration`
 | [Planner Executor](../engineering_patterns/03_agent_orchestration/planner_executor/README.md) | `agent_orchestration.planner_executor` | 15/10/2026 | Yes |
 | [Sequential Workflows](../engineering_patterns/03_agent_orchestration/sequential_workflows/README.md) | `agent_orchestration.sequential_workflows` | 15/10/2026 | Yes |
 | [Single Agent](../engineering_patterns/03_agent_orchestration/single_agent/README.md) | `agent_orchestration.single_agent` | 15/10/2026 | Yes |
+| [Specialist Review Consensus](../engineering_patterns/03_agent_orchestration/specialist_review_consensus/README.md) | `agent_orchestration.specialist_review_consensus` | 22/10/2026 | Yes |
 | [State Management](../engineering_patterns/03_agent_orchestration/state_management/README.md) | `agent_orchestration.state_management` | 15/10/2026 | Yes |
 | [Tool Orchestration](../engineering_patterns/03_agent_orchestration/tool_orchestration/README.md) | `agent_orchestration.tool_orchestration` | 15/10/2026 | Yes |
 
@@ -111,6 +114,7 @@ SDK owner(s): `applied_ai.evaluation`
 | [Evaluation Dataset Design](../engineering_patterns/06_evaluation_and_observability/evaluation_dataset_design/README.md) | `evaluation_and_observability.evaluation_dataset_design` | 15/10/2026 | Yes |
 | [Failure Analysis](../engineering_patterns/06_evaluation_and_observability/failure_analysis/README.md) | `evaluation_and_observability.failure_analysis` | 15/10/2026 | Yes |
 | [Hallucination Detection](../engineering_patterns/06_evaluation_and_observability/hallucination_detection/README.md) | `evaluation_and_observability.hallucination_detection` | 15/10/2026 | Yes |
+| [Implementation Readiness Gate](../engineering_patterns/06_evaluation_and_observability/implementation_readiness_gate/README.md) | `evaluation_and_observability.implementation_readiness_gate` | 22/10/2026 | Yes |
 | [Latency Benchmarking](../engineering_patterns/06_evaluation_and_observability/latency_benchmarking/README.md) | `evaluation_and_observability.latency_benchmarking` | 15/10/2026 | Yes |
 | [Llm As Judge](../engineering_patterns/06_evaluation_and_observability/llm_as_judge/README.md) | `evaluation_and_observability.llm_as_judge` | 15/10/2026 | Yes |
 | [Rag Evaluation](../engineering_patterns/06_evaluation_and_observability/rag_evaluation/README.md) | `evaluation_and_observability.rag_evaluation` | 15/10/2026 | Yes |
@@ -149,6 +153,7 @@ SDK owner(s): `applied_ai.reasoning, applied_ai.execution`
 | [Independent Verification](../engineering_patterns/08_reasoning_and_execution/independent_verification/README.md) | `reasoning_and_execution.independent_verification` | 15/10/2026 | Yes |
 | [Iterative Reasoning](../engineering_patterns/08_reasoning_and_execution/iterative_reasoning/README.md) | `reasoning_and_execution.iterative_reasoning` | 15/10/2026 | Yes |
 | [Mathematical Verification](../engineering_patterns/08_reasoning_and_execution/mathematical_verification/README.md) | `reasoning_and_execution.mathematical_verification` | 15/10/2026 | Yes |
+| [Parallel Tool-Augmented Solver](../engineering_patterns/08_reasoning_and_execution/parallel_tool_augmented_solver/README.md) | `reasoning_and_execution.parallel_tool_augmented_solver` | 21/10/2026 | Yes |
 | [Iterative independent verification](../engineering_patterns/08_reasoning_and_execution/plan_execute_verify/README.md) | `reasoning_and_execution.plan_execute_verify` | 11/10/2026 | Yes |
 | [Reasoning Budget Control](../engineering_patterns/08_reasoning_and_execution/reasoning_budget_control/README.md) | `reasoning_and_execution.reasoning_budget_control` | 15/10/2026 | Yes |
 | [Reflection And Critique](../engineering_patterns/08_reasoning_and_execution/reflection_and_critique/README.md) | `reasoning_and_execution.reflection_and_critique` | 15/10/2026 | Yes |
@@ -156,6 +161,20 @@ SDK owner(s): `applied_ai.reasoning, applied_ai.execution`
 | [Self Correction](../engineering_patterns/08_reasoning_and_execution/self_correction/README.md) | `reasoning_and_execution.self_correction` | 15/10/2026 | Yes |
 | [Stopping Conditions](../engineering_patterns/08_reasoning_and_execution/stopping_conditions/README.md) | `reasoning_and_execution.stopping_conditions` | 15/10/2026 | Yes |
 | [Tool Augmented Reasoning](../engineering_patterns/08_reasoning_and_execution/tool_augmented_reasoning/README.md) | `reasoning_and_execution.tool_augmented_reasoning` | 15/10/2026 | Yes |
+
+## 09_langchain_and_langgraph
+
+SDK owner(s): `optional langchain / langgraph integrations`
+
+| Pattern | ID | Started | Offline |
+| --- | --- | --- | --- |
+| [Controlled calculator tool loop](../engineering_patterns/09_langchain_and_langgraph/langchain/controlled_tool_loop/README.md) | `langchain.controlled_tool_loop` | 28/10/2026 | Yes |
+| [Provider-neutral local RAG](../engineering_patterns/09_langchain_and_langgraph/langchain/provider_neutral_rag/README.md) | `langchain.provider_neutral_rag` | 28/10/2026 | Yes |
+| [Bounded policy tool assistant](../engineering_patterns/09_langchain_and_langgraph/langchain/simple_tool_assistant/README.md) | `langchain.simple_tool_assistant` | 28/10/2026 | Yes |
+| [Human approval gate graph](../engineering_patterns/09_langchain_and_langgraph/langgraph/human_approval_gate/README.md) | `langgraph.human_approval_gate` | 28/10/2026 | Yes |
+| [Long-running case workflow graph](../engineering_patterns/09_langchain_and_langgraph/langgraph/long_running_case/README.md) | `langgraph.long_running_case` | 28/10/2026 | Yes |
+| [Bounded recovery loop graph](../engineering_patterns/09_langchain_and_langgraph/langgraph/recovery_loop/README.md) | `langgraph.recovery_loop` | 28/10/2026 | Yes |
+| [Specialist routing graph](../engineering_patterns/09_langchain_and_langgraph/langgraph/specialist_routing/README.md) | `langgraph.specialist_routing` | 28/10/2026 | Yes |
 
 Run all offline patterns:
 

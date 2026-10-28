@@ -5,7 +5,7 @@ Transient API failures (429, 5xx, connections, timeouts) must not automatically 
 a request, but infinite retries can multiply cost and latency.
 
 ## Mechanism
-`ReliableProvider` wraps any Phase 1 `LLMProvider`; underlying adapters remain
+`ReliableProvider` wraps any `LLMProvider`; underlying adapters remain
 **one HTTP request per `generate()` call**. It retries only errors marked
 `retryable`, respects `Retry-After`, propagates a remaining-time budget, and
 optionally fails over to a *different, explicitly configured* provider.

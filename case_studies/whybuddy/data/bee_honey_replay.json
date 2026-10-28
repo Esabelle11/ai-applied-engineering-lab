@@ -1,0 +1,15 @@
+{
+  "question": "Why do bees make honey?",
+  "script": "Hello there! Bees make yummy honey to eat. Bees fly to flowers to find sweet juice called nectar. They collect the nectar and bring it back to their hive. Inside the hive, the bees mix the nectar with special stuff. This makes the nectar turn into thick, sweet honey! Honey is a yummy food for the bees to store for when they need energy. It is like making a special sweet treat for the colony.",
+  "imagePrompts": [
+    "Friendly honeybees near bright flowers, cheerful children's-book illustration, no words.",
+    "A bee collecting golden nectar from a flower, colorful kid-safe cartoon illustration, no words.",
+    "A bee flying home toward a cozy hive with nectar, picture-book art, no words.",
+    "Worker bees sharing nectar inside a warm honeycomb hive, gentle educational cartoon, no words.",
+    "Nectar changing into thick golden honey in honeycomb cells, child-friendly science illustration, no words.",
+    "Happy bees storing honey in a hive for energy, bright children's-book style, no words.",
+    "A peaceful bee colony with flowers and honeycomb, warm educational cartoon, no words."
+  ],
+  "video": "bee_honey_replay/final_eebf368b7c694705b673059aa602c7a3.mp4",
+  "audio": "bee_honey_replay/eebf368b7c694705b673059aa602c7a3.mp3"
+}

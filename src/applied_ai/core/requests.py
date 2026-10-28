@@ -29,7 +29,7 @@ class StructuredOutputSpec:
         ):
             raise ValueError("Schema name must be 1–64 ASCII letters, numbers, _ or -")
         if not isinstance(self.schema, Mapping) or self.schema.get("type") != "object":
-            raise ValueError("Phase 1 structured output requires an object JSON Schema")
+            raise ValueError("Structured output requires an object JSON Schema")
         try:
             Draft202012Validator.check_schema(dict(self.schema))
         except SchemaError as exc:
@@ -44,6 +44,7 @@ class LLMRequest:
     temperature: float | None = None
     response_format: StructuredOutputSpec | None = None
     timeout_seconds: float | None = None
+    reasoning_effort: str | None = None
 
     def __post_init__(self) -> None:
         if not isinstance(self.model, str) or not self.model.strip():

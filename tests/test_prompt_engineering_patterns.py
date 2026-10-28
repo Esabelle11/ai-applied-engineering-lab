@@ -1,4 +1,4 @@
-"""Contract tests for the Phase 3 prompt-engineering handbook examples."""
+"""Contract tests for prompt-engineering handbook examples."""
 
 from __future__ import annotations
 

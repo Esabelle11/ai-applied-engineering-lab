@@ -18,11 +18,10 @@
         <button class="nav-item" data-section="patterns"><span class="nav-icon">▦</span> Pattern library</button>
         <button class="nav-item" data-section="playground"><span class="nav-icon">▶</span> Playground</button>
         <button class="nav-item" data-section="compare"><span class="nav-icon">⇄</span> Compare</button>
-        <button class="nav-item" data-section="evidence"><span class="nav-icon">▥</span> Evidence</button>
       </nav>
       <div class="sidebar-bottom">
         <div class="environment"><span class="status-dot"></span><div><b>LOCAL WORKSPACE</b><small id="connection">Checking backend…</small></div></div>
-        <div class="side-meta">v0.7.0 <span>·</span> Phase 6 / D6</div>
+        <div class="side-meta">v0.7.0 <span>·</span> Local reference</div>
       </div>
     </aside>
 
@@ -34,7 +33,7 @@
         <p class="hero-copy">Explore the reusable systems behind reliable AI applications. Run controlled examples, inspect what happened, and compare implementation tradeoffs—all from one workspace.</p>
         <div class="hero-actions"><button class="primary-button" data-go="playground">Open playground <span>↗</span></button><button class="secondary-button" data-go="patterns">Browse patterns <span>→</span></button></div>
         <div class="metric-grid"><div class="metric"><div class="metric-label">ENGINEERING DOMAINS</div><b>08</b><small>Independent capabilities</small></div><div class="metric"><div class="metric-label">REGISTERED PATTERNS</div><b id="pattern-count">—</b><small>Discoverable experiments</small></div><div class="metric"><div class="metric-label">AVAILABLE DEMOS</div><b id="demo-count">—</b><small>Safe, curated execution</small></div><div class="metric"><div class="metric-label">API BUDGET REMAINING</div><b id="quota-left">—</b><small>Process-local call units</small></div></div>
-        <div class="two-column"><div class="panel"><div class="panel-top"><div><div class="tiny-label">QUICK START</div><h2>Choose a starting point</h2></div><span class="tag">NO API KEY</span></div><div id="quick-list" class="quick-list"></div></div><div class="panel concepts"><div class="tiny-label">SYSTEM DESIGN</div><h2>Clear boundaries.<br>Composable systems.</h2><div class="flow-chart"><div class="flow-node">Handbook patterns <small>Concepts & examples</small></div><div class="flow-arrow">↓</div><div class="flow-node highlight">Shared Python SDK <small>Single source of logic</small></div><div class="flow-arrow">↓</div><div class="flow-node">Controlled runners <small>Policies & budgets</small></div><div class="flow-arrow">↓</div><div class="flow-node">Playground / reports <small>Inspectable outputs</small></div></div></div></div>
+        <div class="two-column"><div class="panel"><div class="panel-top"><div><div class="tiny-label">QUICK START</div><h2>Choose a starting point</h2></div><span class="tag">NO API KEY</span></div><div id="quick-list" class="quick-list"></div></div><div class="panel concepts"><div class="tiny-label">SYSTEM DESIGN</div><h2>Clear boundaries.<br>Composable systems.</h2><div class="flow-chart"><div class="flow-node">Handbook patterns <small>Concepts & examples</small></div><div class="flow-arrow">↓</div><div class="flow-node highlight">Shared Python SDK <small>Single source of logic</small></div><div class="flow-arrow">↓</div><div class="flow-node">Curated playground <small>Inspectable outputs</small></div></div></div></div>
       </section>
 
       <section id="patterns" class="view"><div class="view-heading"><div><div class="eyebrow"><span class="line"></span> KNOWLEDGE CATALOG</div><h1>Pattern <em>library.</em></h1><p>Browse the canonical, runnable handbook patterns. The UI never directly executes README or script files.</p></div><span id="pattern-total" class="counter">— PATTERNS</span></div><div class="toolbar"><label class="search-bar"><span>⌕</span><input id="pattern-search" type="search" placeholder="Search name or category…" autocomplete="off"></label><select id="pattern-filter" aria-label="Filter pattern category"><option value="">All categories</option></select></div><div id="pattern-grid" class="pattern-grid"></div></section>
@@ -43,7 +42,6 @@
 
       <section id="compare" class="view"><div class="view-heading"><div><div class="eyebrow"><span class="line"></span> TRADEOFF ANALYSIS</div><h1>Compare <em>approaches.</em></h1><p>Matched offline inputs, controlled failure sequences, and side-by-side evidence—not unsupported rankings.</p></div></div><div class="panel compare-panel"><label class="field-label" for="compare-select">COMPARISON SCENARIO</label><select id="compare-select"></select><p id="compare-description" class="helper"></p><label class="field-label" for="compare-input">SHARED INPUT</label><input id="compare-input" maxlength="500" value="Explain reliable AI systems"><button class="primary-button" id="compare-button">Run comparison <span>⇄</span></button></div><div id="compare-results" class="compare-results"><div class="empty-card">Select a scenario and run a comparison to see both implementations.</div></div><p id="compare-scope" class="footnote"></p></section>
 
-      <section id="evidence" class="view"><div class="view-heading"><div><div class="eyebrow"><span class="line"></span> REPRODUCIBLE BASELINES</div><h1>Evidence, <em>not anecdotes.</em></h1><p>Phase 5 baseline summaries, tied to fixed datasets and manifests. These results are synthetic and are not model-quality benchmarks.</p></div></div><div class="notice">ⓘ &nbsp; Offline fixture results are not real provider latency, reliability, token cost, or answer quality. Read methodology and limitations before interpreting the numbers.</div><div id="evidence-list" class="evidence-list"></div></section>
       <footer>APPLIED AI ENGINEERING LAB <span>·</span> LOCAL-FIRST EXPERIMENTAL WORKSPACE <span>·</span> NO GENERATED CODE EXECUTES IN THE WEB SERVER</footer>
     </main>
   </div>

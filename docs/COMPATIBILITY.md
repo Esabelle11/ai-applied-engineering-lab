@@ -7,7 +7,7 @@ The first release candidate is **0.8.0**. It is a **pre-1.0** Python library; th
 - **Python 3.12 and 3.13** are the CI targets; Python >=3.12 is declared, but newer unreleased versions are not promised.
 - Linux, macOS and Windows are CI targets for offline Python functionality.
 - Optional playground requires `--extra playground`, binds to localhost by default, and is not a multi-user hosted service.
-- Docker is optional and only used by the explicit math sandbox CLI; Docker installation/image and security posture are not verified by regular tests.
+- Docker is optional and used only by the sandboxed-Python engineering pattern; Docker installation/image and security posture are not verified by regular tests.
 - OpenRouter, OpenAI, Anthropic, Google and Ollama provider configurations are optional. Live model capabilities, endpoint contracts, pricing and availability can change without this project's release.
 
 ## Public API promise (pre-1.0)

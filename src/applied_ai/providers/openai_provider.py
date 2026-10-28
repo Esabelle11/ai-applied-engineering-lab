@@ -1,6 +1,6 @@
 """Minimal synchronous OpenAI Responses API adapter using optional httpx.
 
-No SDK-level retries are added here. Phase 2 will supply an explicit retry policy.
+No SDK-level retries are added here. ``ReliableProvider`` supplies an explicit retry policy.
 """
 
 from __future__ import annotations

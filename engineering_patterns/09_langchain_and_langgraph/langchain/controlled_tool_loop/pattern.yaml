@@ -1,0 +1,12 @@
+id: langchain.controlled_tool_loop
+name: Controlled calculator tool loop
+category: 09_langchain_and_langgraph
+status: experimental
+level: intermediate
+requires_api_key: false
+supports_offline_testing: true
+entrypoint: run.py
+started_on: "28/10/2026"
+validation:
+  offline_test: tests/test_framework_patterns.py
+

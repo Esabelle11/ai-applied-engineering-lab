@@ -1,0 +1,31 @@
+{
+  "message": "The streetlight outside 18 River Walk has been off for two nights.",
+  "response": {
+    "model": "jev-latest",
+    "answers": {
+      "intent": {
+        "type": "choice",
+        "choice": "REPORT",
+        "confidence": 0.98
+      },
+      "category": {
+        "type": "choice",
+        "choice": "STREETLIGHT",
+        "confidence": 0.96
+      },
+      "location_present": {
+        "type": "noul",
+        "noul": 0.93
+      },
+      "urgency": {
+        "type": "score",
+        "score": 1.0,
+        "confidence": 0.87
+      }
+    },
+    "usage": {
+      "input_tokens": 72,
+      "output_tokens": 16
+    }
+  }
+}

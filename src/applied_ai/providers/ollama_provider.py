@@ -30,7 +30,7 @@ class OllamaProvider:
             or parsed.username
             or parsed.password
         ):
-            raise ValueError("Phase 4 Ollama adapter only allows loopback HTTP endpoints")
+            raise ValueError("Ollama adapter only allows loopback HTTP endpoints")
         self._base_url = base_url.rstrip("/")
         self._transport = HTTPJSONTransport(
             "ollama", timeout_seconds=timeout_seconds, client=client

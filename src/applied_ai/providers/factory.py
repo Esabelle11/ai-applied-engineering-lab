@@ -14,13 +14,16 @@ from applied_ai.core.exceptions import ConfigurationError
 from applied_ai.core.protocols import LLMProvider
 from applied_ai.providers.mock import MockProvider
 
-SUPPORTED_PROVIDERS = frozenset({"mock", "openai", "openrouter", "anthropic", "google", "ollama"})
+SUPPORTED_PROVIDERS = frozenset(
+    {"mock", "openai", "openrouter", "anthropic", "google", "groq", "ollama"}
+)
 DEFAULT_MODELS = {
     "mock": "mock-model",
     "openrouter": "nvidia/nemotron-3.5-lightning:free",
     "openai": "gpt-4.1-mini",
     "anthropic": "claude-haiku-4-5",
     "google": "gemini-3.5-flash",
+    "groq": "llama-3.3-70b-versatile",
     "ollama": "llama3.2",
 }
 
@@ -107,6 +110,12 @@ class ProviderFactory:
             provider = GoogleProvider(
                 api_key=self.env.get("GOOGLE_API_KEY") or self.env.get("GEMINI_API_KEY"),
                 timeout_seconds=self.timeout,
+            )
+        elif kind == "groq":
+            from applied_ai.providers.groq_provider import GroqProvider
+
+            provider = GroqProvider(
+                api_key=self.env.get("GROQ_API_KEY"), timeout_seconds=self.timeout
             )
         else:
             from applied_ai.providers.ollama_provider import OllamaProvider

@@ -4,7 +4,7 @@
 Illustrate a reusable reliability engineering engineering capability without paid API calls. The example uses deterministic offline data and the shared `applied_ai` SDK.
 
 ## Mechanism and implementation
-Compare fixed versus exponential waiting schedules using the same synthetic error and bounded policy settings. It reuses the canonical Phase 2 RetryPolicy implementation.
+Compare fixed versus exponential waiting schedules using the same synthetic error and bounded policy settings. It reuses the canonical `RetryPolicy` implementation.
 
 ## Run offline
 
@@ -19,8 +19,8 @@ These are **analytical delays**, not latency measurements or live success rates.
 Invalid configuration or unsupported capabilities raise exceptions. No hidden network calls, retries or quality guarantees are introduced in these demonstrations. Refer to the runnable tests for the negative paths.
 
 ## Validation and comparison
-- Contract, success and failure tests: `tests/test_phase3_patterns.py`.
-- No measured performance comparison is claimed. Phase 5 will introduce controlled benchmark reports.
+- Contract, success and failure tests: `tests/test_patterns.py`.
+- No measured performance comparison is claimed.
 - CLI example should run without credentials after project installation.
 
 ## Reuse

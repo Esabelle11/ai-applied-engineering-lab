@@ -1,0 +1,11 @@
+id: model_integration.jev_typed_decisions
+name: Jev typed decisions
+category: 02_model_integration
+status: demo
+level: intermediate
+requires_api_key: true
+supports_offline_testing: true
+entrypoint: run.py
+started_on: "28/10/2026"
+validation:
+  offline_test: tests/test_jev_typed_decisions.py

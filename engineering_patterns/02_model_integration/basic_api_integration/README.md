@@ -30,7 +30,7 @@ No `.env` is automatically loaded.
 ## Variations
 Use `StructuredOutputSpec` for a JSON schema, supported only by capable providers/models.
 Unsupported capabilities raise `CapabilityNotSupportedError` instead of downgrading silently.
-SDK-level retries, streaming, async generation, and tools are not part of Phase 1.
+SDK-level retries, streaming, async generation, and tools are outside this basic example.
 
 ## Validation & limits
 - Tests: `tests/test_provider_contract.py`, `tests/test_openai_http.py`.

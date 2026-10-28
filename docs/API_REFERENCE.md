@@ -10,10 +10,10 @@ Other modules are experimental unless explicitly documented.
 
 Defined in [`applied_ai.core.requests`](../src/applied_ai/core/requests.py).
 
-LLMRequest(model: 'str', messages: 'tuple[Message, ...]', max_output_tokens: 'int \| None' = None, temperature: 'float \| None' = None, response_format: 'StructuredOutputSpec \| None' = None, timeout_seconds: 'float \| None' = None)
+LLMRequest(model: 'str', messages: 'tuple[Message, ...]', max_output_tokens: 'int \| None' = None, temperature: 'float \| None' = None, response_format: 'StructuredOutputSpec \| None' = None, timeout_seconds: 'float \| None' = None, reasoning_effort: 'str \| None' = None)
 
 ```python
-LLMRequest(model: 'str', messages: 'tuple[Message, ...]', max_output_tokens: 'int | None' = None, temperature: 'float | None' = None, response_format: 'StructuredOutputSpec | None' = None, timeout_seconds: 'float | None' = None) -> None
+LLMRequest(model: 'str', messages: 'tuple[Message, ...]', max_output_tokens: 'int | None' = None, temperature: 'float | None' = None, response_format: 'StructuredOutputSpec | None' = None, timeout_seconds: 'float | None' = None, reasoning_effort: 'str | None' = None) -> None
 ```
 
 ### `LLMResponse`

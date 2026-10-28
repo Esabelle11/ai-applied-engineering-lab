@@ -8,5 +8,4 @@ supports_offline_testing: true
 entrypoint: run.py
 started_on: "11/10/2026"
 validation:
-  offline_test: tests/test_phase3_patterns.py
-  benchmarks: false
+  offline_test: tests/test_patterns.py
