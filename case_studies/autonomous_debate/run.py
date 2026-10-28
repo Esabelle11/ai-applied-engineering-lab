@@ -396,10 +396,10 @@ def main(argv: Sequence[str] | None = None) -> None:
                 )
         except (ConfigurationError, FileExistsError, ValueError) as exc:
             parser.error(str(exc))
-        print(json.dumps(_result_as_dict(result), indent=2, ensure_ascii=False))
+        print(json.dumps(_result_as_dict(result), indent=2, ensure_ascii=True))
         return
     if args.replay:
-        print(json.dumps(_result_as_dict(replay()), indent=2, ensure_ascii=False))
+        print(json.dumps(_result_as_dict(replay()), indent=2, ensure_ascii=True))
         return
     factory = ProviderFactory()
     if factory.kind == "mock":
@@ -408,7 +408,7 @@ def main(argv: Sequence[str] | None = None) -> None:
     if not args.live:
         print("A live LLM model is configured. Run with --live, or use --replay instead.")
         return
-    print(json.dumps(_result_as_dict(run(allow_live=True)), indent=2, ensure_ascii=False))
+    print(json.dumps(_result_as_dict(run(allow_live=True)), indent=2, ensure_ascii=True))
 
 
 if __name__ == "__main__":

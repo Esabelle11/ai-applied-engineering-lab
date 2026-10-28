@@ -31,7 +31,7 @@ groq = ["httpx>=0.27,<1"]
 media = [
   "accelerate>=1,<2",
   "diffusers>=0.36,<1",
-  "Pillow>=10,<12",
+  "Pillow>=12.1.1,<13",
   "safetensors>=0.5,<1",
   "torch>=2.6,<3",
   "transformers>=4.48,<6",
